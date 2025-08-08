@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - esbuild
+
+onlyBuiltDependencies:
+  - eslint-plugin-jsx-ally
