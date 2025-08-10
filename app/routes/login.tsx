@@ -1,5 +1,5 @@
-import { Welcome } from '../welcome/welcome'
-import type { Route } from './+types/home'
+import { Login } from '@features/login/login'
+import type { Route } from './+types/login'
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +8,6 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
-export default function Home() {
-  return <Welcome />
+export default function LoginRoute() {
+  return <Login />
 }
