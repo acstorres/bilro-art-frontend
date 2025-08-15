@@ -3,16 +3,17 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { Form } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
 import {
-  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
+  Form as FormProvider,
 } from '@components/ui/form'
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card'
 
@@ -30,10 +31,6 @@ export function Login() {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof loginValidationFormSchema>) => {
-    console.log(values)
-  }
-
   return (
     <div className="w-full h-screen bg-primary justify-center flex p-4">
       <Card className="w-full max-w-sm h-min self-center gap-0">
@@ -41,8 +38,8 @@ export function Login() {
           <LogoDark size="190" />
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+          <Form method="post" className="grid gap-4">
+            <FormProvider {...form}>
               <FormField
                 control={form.control}
                 name="email"
@@ -88,7 +85,7 @@ export function Login() {
               <Button type="submit" variant="default" size="default">
                 Entrar
               </Button>
-            </form>
+            </FormProvider>
           </Form>
         </CardContent>
         <CardFooter className="pt-4">

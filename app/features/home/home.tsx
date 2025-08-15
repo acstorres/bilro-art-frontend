@@ -1,9 +1,12 @@
-import Loading from '@components/ui/loading'
-
 export function Home() {
   return (
     <div>
-      <Loading />
+      <img
+        src="app/shared/assets/logo-letter.svg"
+        alt={'logo-letter'}
+        width={200}
+        height={200}
+      />
     </div>
   )
 }
