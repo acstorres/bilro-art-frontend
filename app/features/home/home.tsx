@@ -1,7 +1,9 @@
+import Loading from '@components/ui/loading'
+
 export function Home() {
   return (
-    <main>
-      <div>Home</div>
-    </main>
+    <div>
+      <Loading />
+    </div>
   )
 }

@@ -21,7 +21,7 @@ import LogoDark from '@shared/assets/logo-dark'
 import { loginValidationFormSchema } from './validations'
 import { TypographyBase } from '@components/typography/typography-base'
 
-export function Login() {
+export function Register() {
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
     resolver: zodResolver(loginValidationFormSchema),
     defaultValues: {
@@ -90,15 +90,16 @@ export function Login() {
               </Button>
             </form>
           </Form>
+
+          <CardFooter className="pt-4">
+            <TypographyBase className="text-secondary font-normal">
+              Ainda não tem conta?
+            </TypographyBase>
+            <Button variant="link" className="pl-2 text-sm">
+              Criar conta
+            </Button>
+          </CardFooter>
         </CardContent>
-        <CardFooter className="pt-4">
-          <TypographyBase className="text-secondary font-normal">
-            Ainda não tem conta?
-          </TypographyBase>
-          <Button variant="link" className="pl-2 text-sm">
-            Criar conta
-          </Button>
-        </CardFooter>
       </Card>
     </div>
   )
