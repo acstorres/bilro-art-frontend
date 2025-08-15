@@ -6,9 +6,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigation,
 } from 'react-router'
+
 import './app.css'
-import './mocks'
+import './shared/mocks'
+import Loader from '@components/ui/loader'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -42,7 +45,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />
+  const navigation = useNavigation()
+
+  const isLoading =
+    navigation.state === 'loading' || navigation.state === 'submitting'
+
+  return <div>{isLoading ? <Loader isFullScreen /> : <Outlet />}</div>
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
