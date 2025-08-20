@@ -1,16 +1,18 @@
-import { Login } from '@features/login/login'
-import type { Route } from './+types/login'
-import { publicAPI } from '~/api/config'
-import { AUTH } from '~/api/endpoints'
 import { redirect } from 'react-router'
+import type { Route } from './+types/register'
+
+import { publicAPI } from '@api/config'
+import { AUTH } from '@api/endpoints'
+
 import { RoutesEnum } from '~/routes'
+import { Register } from '@features/register/register'
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'Login' }, { name: 'description', content: '' }]
+  return [{ title: 'Register' }, { name: 'description', content: '' }]
 }
 
-export default function LoginRoute() {
-  return <Login />
+export default function RegisterRoute() {
+  return <Register />
 }
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
@@ -20,7 +22,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
   let user = await publicAPI().post(AUTH, { email, password })
 
   if (!user) {
-    return redirect(RoutesEnum.LOGIN)
+    return redirect(RoutesEnum.REGISTER)
   }
   return redirect(RoutesEnum.HOME)
 }

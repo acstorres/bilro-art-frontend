@@ -10,7 +10,8 @@ import {
 } from 'react-router'
 
 import './app.css'
-import './shared/mocks'
+import './mocks'
+
 import Loader from '@components/ui/loader'
 
 export const links: Route.LinksFunction = () => [
@@ -50,7 +51,7 @@ export default function App() {
   const isLoading =
     navigation.state === 'loading' || navigation.state === 'submitting'
 
-  return <div>{isLoading ? <Loader isFullScreen /> : <Outlet />}</div>
+  return <>{isLoading ? <Loader isFullScreen /> : <Outlet />}</>
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
