@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header>
       <div
-        className={`w-full bg-primary h-8 transition-all duration-300 ${isScrolled ? 'hidden' : ''}`}
+        className={`w-full bg-primary h-7 transition-all duration-300 ${isScrolled ? 'hidden' : ''}`}
       ></div>
       <div
         className={`flex pl-30 pr-30 pt-2 pb-2 justify-between mx-auto transition-all duration-300 ${
