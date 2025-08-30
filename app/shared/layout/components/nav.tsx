@@ -1,7 +1,5 @@
 'use client'
 
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from 'lucide-react'
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,35 +7,34 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from '@components/ui/navigation-menu'
 import { Link } from 'react-router'
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Sobre o BilroArt',
-    href: '/docs/primitives/alert-dialog',
-    description:
-      'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Artesãos',
-    href: '/docs/primitives/hover-card',
-    description:
-      'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Produtos',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Contato',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-]
+// const components: { title: string; href: string; description: string }[] = [
+//   {
+//     title: 'Sobre o BilroArt',
+//     href: '/docs/primitives/alert-dialog',
+//     description:
+//       'A modal dialog that interrupts the user with important content and expects a response.',
+//   },
+//   {
+//     title: 'Artesãos',
+//     href: '/docs/primitives/hover-card',
+//     description:
+//       'For sighted users to preview content available behind a link.',
+//   },
+//   {
+//     title: 'Produtos',
+//     href: '/docs/primitives/progress',
+//     description:
+//       'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+//   },
+//   {
+//     title: 'Contato',
+//     href: '/docs/primitives/scroll-area',
+//     description: 'Visually or semantically separates content.',
+//   },
+// ]
 
 export function Nav() {
   return (
@@ -74,7 +71,7 @@ export function Nav() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
@@ -89,8 +86,8 @@ export function Nav() {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem>
           <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
             <Link to="/docs">Docs</Link>
           </NavigationMenuLink>
@@ -172,7 +169,7 @@ export function Nav() {
               </li>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   )
