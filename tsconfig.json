@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
+      "@api/*": ["./app/api/*"],
       "@shared/*": ["./app/shared/*"],
+      "@mocks/*": ["./app/mocks/*"],
       "@components/*": ["./app/components/*"],
       "@features/*": ["./app/features/*"]
     },

@@ -32,71 +32,77 @@ export function Login() {
   })
 
   return (
-    <div className="w-full h-screen bg-primary justify-center flex p-4">
-      <Card className="w-full max-w-sm h-min self-center gap-0">
-        <CardHeader className="justify-center">
-          <LogoDark size="190" />
-        </CardHeader>
-        <CardContent>
-          <Form method="post" className="grid gap-4">
-            <FormProvider {...form}>
-              <FormField
-                control={form.control}
-                name="email"
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg font-normal">Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Digite seu email"
-                        required
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-lg font-normal">Senha</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="Digite sua senha"
-                        required
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage>
-                      <Button variant="link" className="pl-0 pt-0 text-sm">
-                        Esqueceu a senha?
-                      </Button>
-                    </FormMessage>
-                  </FormItem>
-                )}
-              />
+    <main>
+      <div className="w-full h-screen bg-primary justify-center flex p-4">
+        <Card className="w-full max-w-sm h-min self-center gap-0">
+          <CardHeader className="justify-center">
+            <LogoDark size="190" />
+          </CardHeader>
+          <CardContent>
+            <Form method="post" className="grid gap-4">
+              <FormProvider {...form}>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-lg font-normal">
+                        Email
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Digite seu email"
+                          required
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-lg font-normal">
+                        Senha
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="Digite sua senha"
+                          required
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage>
+                        <Button variant="link" className="pl-0 pt-0 text-sm">
+                          Esqueceu a senha?
+                        </Button>
+                      </FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-              <Button type="submit" variant="default" size="default">
-                Entrar
-              </Button>
-            </FormProvider>
-          </Form>
-        </CardContent>
-        <CardFooter className="pt-4">
-          <TypographyBase className="text-secondary font-normal">
-            Ainda não tem conta?
-          </TypographyBase>
-          <Button variant="link" className="pl-2 text-sm">
-            Criar conta
-          </Button>
-        </CardFooter>
-      </Card>
-    </div>
+                <Button type="submit" variant="default" size="default">
+                  Entrar
+                </Button>
+              </FormProvider>
+            </Form>
+          </CardContent>
+          <CardFooter className="pt-4">
+            <TypographyBase className="text-secondary font-normal">
+              Ainda não tem conta?
+            </TypographyBase>
+            <Button variant="link" className="pl-2 text-sm">
+              Criar conta
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
+    </main>
   )
 }

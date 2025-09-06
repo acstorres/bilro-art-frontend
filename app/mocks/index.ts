@@ -14,6 +14,6 @@ const enableMocking = async () => {
   }
 }
 
-await enableMocking()
+enableMocking()
 
 export {}

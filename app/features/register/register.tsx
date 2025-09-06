@@ -17,9 +17,9 @@ import {
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card'
 
 import LogoDark from '@shared/assets/logo-dark'
+import { TypographyBase } from '@components/typography/typography-base'
 
 import { loginValidationFormSchema } from './validations'
-import { TypographyBase } from '@components/typography/typography-base'
 
 export function Register() {
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
@@ -30,19 +30,15 @@ export function Register() {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof loginValidationFormSchema>) => {
-    console.log(values)
-  }
-
   return (
-    <div className="w-full h-screen bg-primary justify-center flex p-4">
-      <Card className="w-full max-w-sm h-min self-center gap-0">
-        <CardHeader className="justify-center">
-          <LogoDark size="190" />
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+    <main>
+      <div className="w-full h-screen bg-primary justify-center flex p-4">
+        <Card className="w-full max-w-sm h-min self-center gap-0">
+          <CardHeader className="justify-center">
+            <LogoDark size="190" />
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
               <FormField
                 control={form.control}
                 name="email"
@@ -88,19 +84,19 @@ export function Register() {
               <Button type="submit" variant="default" size="default">
                 Entrar
               </Button>
-            </form>
-          </Form>
+            </Form>
 
-          <CardFooter className="pt-4">
-            <TypographyBase className="text-secondary font-normal">
-              Ainda não tem conta?
-            </TypographyBase>
-            <Button variant="link" className="pl-2 text-sm">
-              Criar conta
-            </Button>
-          </CardFooter>
-        </CardContent>
-      </Card>
-    </div>
+            <CardFooter className="pt-4">
+              <TypographyBase className="text-secondary font-normal">
+                Ainda não tem conta?
+              </TypographyBase>
+              <Button variant="link" className="pl-2 text-sm">
+                Criar conta
+              </Button>
+            </CardFooter>
+          </CardContent>
+        </Card>
+      </div>
+    </main>
   )
 }

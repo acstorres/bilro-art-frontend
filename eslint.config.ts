@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import tsParser from '@typescript-eslint/parser'
 import pluginReact from 'eslint-plugin-react'
 import unusedImports from 'eslint-plugin-unused-imports'
+import reactHooks from 'eslint-plugin-react-hooks'
 import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 
@@ -11,6 +12,7 @@ export default defineConfig([
     plugins: {
       js,
       'unused-imports': unusedImports,
+      'react-hooks': reactHooks,
       react: pluginReact,
     },
     extends: ['js/recommended'],
@@ -30,6 +32,8 @@ export default defineConfig([
       'no-unused-vars': 'off',
       'no-undef': 'off',
       'no-empty-pattern': 'off',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'error',
