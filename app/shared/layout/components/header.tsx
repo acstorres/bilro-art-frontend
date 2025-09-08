@@ -2,7 +2,7 @@ import { Nav } from './nav'
 import { Handbag, Search, User } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Button } from '@components/ui/button'
-import { RoutesEnum } from '~/routes'
+import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
 
 export default function Header() {

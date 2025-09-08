@@ -15,12 +15,13 @@
     "rootDirs": [".", "./.react-router/types"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"],
+      "@*": ["./app/*"],
       "@api/*": ["./app/api/*"],
       "@shared/*": ["./app/shared/*"],
       "@mocks/*": ["./app/mocks/*"],
       "@components/*": ["./app/components/*"],
-      "@features/*": ["./app/features/*"]
+      "@features/*": ["./app/features/*"],
+      "@services/*": ["./app/services/*"]
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
