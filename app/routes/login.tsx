@@ -13,10 +13,8 @@ export default function LoginRoute() {
 }
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
-  let formData = await request.formData()
-  let login = formData.get('email') as string
-  let password = formData.get('password') as string
-  let token = await authUser({ data: { login, password } })
+  let data = await request.json()
+  let token = await authUser({ data })
 
   if (!token) {
     return redirect(RoutesEnum.LOGIN)

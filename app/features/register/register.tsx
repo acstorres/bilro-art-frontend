@@ -28,9 +28,9 @@ export function Register() {
   const form = useForm<z.infer<typeof registerValidationFormSchema>>({
     resolver: zodResolver(registerValidationFormSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
+      email: undefined,
+      password: undefined,
+      confirmPassword: undefined,
       isTermsAccepted: false,
     },
   })
@@ -41,7 +41,7 @@ export function Register() {
       password: data.password,
     }
 
-    submit(JSON.stringify(user), {
+    submit(user, {
       method: 'post',
       encType: 'application/json',
     })
@@ -124,32 +124,34 @@ export function Register() {
                   control={form.control}
                   name="isTermsAccepted"
                   render={({ field }) => (
-                    <FormItem className="flex gap-2">
-                      <FormControl>
-                        <Checkbox
-                          className="self-center"
-                          checked={field.value}
-                          onCheckedChange={() => field.onChange(!field.value)}
-                        />
-                      </FormControl>
-                      <FormLabel>
-                        <TypographySmall className="font-bold">
-                          Li e aceito os{' '}
-                          <Button
-                            variant="link"
-                            className="text-sm font-bold inline p-0 h-6"
-                          >
-                            Termos de Uso
-                          </Button>{' '}
-                          e as{' '}
-                          <Button
-                            variant="link"
-                            className="text-sm font-bold inline p-0 h-6"
-                          >
-                            Políticas de Privacidade
-                          </Button>
-                        </TypographySmall>
-                      </FormLabel>
+                    <FormItem>
+                      <div className="flex gap-2">
+                        <FormControl>
+                          <Checkbox
+                            className="self-center"
+                            checked={field.value}
+                            onCheckedChange={() => field.onChange(!field.value)}
+                          />
+                        </FormControl>
+                        <FormLabel>
+                          <TypographySmall className="font-bold">
+                            Li e aceito os{' '}
+                            <Button
+                              variant="link"
+                              className="text-sm font-bold inline p-0 h-6"
+                            >
+                              Termos de Uso
+                            </Button>{' '}
+                            e as{' '}
+                            <Button
+                              variant="link"
+                              className="text-sm font-bold inline p-0 h-6"
+                            >
+                              Políticas de Privacidade
+                            </Button>
+                          </TypographySmall>
+                        </FormLabel>
+                      </div>
                       <FormMessage />
                     </FormItem>
                   )}

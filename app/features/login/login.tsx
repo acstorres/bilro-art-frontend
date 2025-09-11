@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Form, useNavigate } from 'react-router'
+import { useNavigate, useSubmit } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
@@ -21,9 +21,11 @@ import { loginValidationFormSchema } from './validations'
 import { TypographyBase } from '@components/typography/typography-base'
 import { RoutesEnum } from '@routes'
 import { TypographyH1 } from '@components/typography/typography-h1'
+import type { AuthUserEntity } from '@services/user/post/post.entity'
 
 export function Login() {
   const navigate = useNavigate()
+  const submit = useSubmit()
 
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
     resolver: zodResolver(loginValidationFormSchema),
@@ -32,6 +34,18 @@ export function Login() {
       password: undefined,
     },
   })
+
+  const onSubmit = (data: z.infer<typeof loginValidationFormSchema>) => {
+    const user: AuthUserEntity = {
+      login: data.email,
+      password: data.password,
+    }
+
+    submit(user, {
+      method: 'post',
+      encType: 'application/json',
+    })
+  }
 
   return (
     <main>
@@ -44,23 +58,23 @@ export function Login() {
             </TypographyH1>
           </CardHeader>
           <CardContent>
-            <Form method="post" className="grid gap-4">
+            <form
+              id="login-form"
+              onSubmit={form.handleSubmit(onSubmit)}
+              method="post"
+              className="grid gap-4"
+            >
               <FormProvider {...form}>
                 <FormField
                   control={form.control}
                   name="email"
-                  rules={{ required: true }}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-lg font-normal">
                         E-mail
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Digite seu e-mail"
-                          required
-                          {...field}
-                        />
+                        <Input placeholder="Digite seu e-mail" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -69,7 +83,6 @@ export function Login() {
                 <FormField
                   control={form.control}
                   name="password"
-                  rules={{ required: true }}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-lg font-normal">
@@ -79,7 +92,6 @@ export function Login() {
                         <Input
                           type="password"
                           placeholder="Digite sua senha"
-                          required
                           {...field}
                         />
                       </FormControl>
@@ -96,7 +108,7 @@ export function Login() {
                   Entrar
                 </Button>
               </FormProvider>
-            </Form>
+            </form>
           </CardContent>
           <CardFooter className="pt-4">
             <TypographyBase className="text-secondary font-normal">
