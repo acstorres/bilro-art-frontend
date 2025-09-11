@@ -9,7 +9,7 @@ export type LoaderProps = {
 }
 
 const Loader: React.FC<LoaderProps> = ({
-  size = '160',
+  size = '50',
   speed = '1s',
   label = 'Carregando...',
   className = '',

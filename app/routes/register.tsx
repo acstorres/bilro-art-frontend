@@ -1,11 +1,9 @@
-import { redirect } from 'react-router'
+import { createUser } from '@services/user/post/post.requests'
 import type { Route } from './+types/register'
 
-import { publicAPI } from '@api/config'
-import { AUTH } from '@api/endpoints'
-
-import { RoutesEnum } from '~/routes'
 import { Register } from '@features/register/register'
+import { redirect } from 'react-router'
+import { RoutesEnum } from '@routes'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Register' }, { name: 'description', content: '' }]
@@ -16,13 +14,11 @@ export default function RegisterRoute() {
 }
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
-  let formData = await request.formData()
-  let email = formData.get('email')
-  let password = formData.get('password')
-  let user = await publicAPI().post(AUTH, { email, password })
+  const data = await request.json()
+  const user = await createUser({ data })
 
-  if (!user) {
+  if (!user.id) {
     return redirect(RoutesEnum.REGISTER)
   }
-  return redirect(RoutesEnum.HOME)
+  return redirect(RoutesEnum.LOGIN)
 }

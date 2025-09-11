@@ -1,9 +1,8 @@
 import { Login } from '@features/login/login'
 import type { Route } from './+types/login'
-import { publicAPI } from '~/api/config'
-import { AUTH } from '~/api/endpoints'
 import { redirect } from 'react-router'
-import { RoutesEnum } from '~/routes'
+import { RoutesEnum } from '@routes'
+import { authUser } from '@services/user/post/post.requests'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Login' }, { name: 'description', content: '' }]
@@ -14,13 +13,12 @@ export default function LoginRoute() {
 }
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
-  let formData = await request.formData()
-  let email = formData.get('email')
-  let password = formData.get('password')
-  let user = await publicAPI().post(AUTH, { email, password })
+  let data = await request.json()
+  let token = await authUser({ data })
 
-  if (!user) {
+  if (!token) {
     return redirect(RoutesEnum.LOGIN)
   }
+  //TODO gerenciar cookie
   return redirect(RoutesEnum.HOME)
 }

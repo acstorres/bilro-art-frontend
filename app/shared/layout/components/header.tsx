@@ -2,7 +2,7 @@ import { Nav } from './nav'
 import { Handbag, Search, User } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Button } from '@components/ui/button'
-import { RoutesEnum } from '~/routes'
+import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
 
 export default function Header() {
@@ -12,8 +12,8 @@ export default function Header() {
 
   return (
     <header>
-      <div className={`pl-30 pr-30 pt-2 pb-2 fixed w-full`}>
-        <div className={`justify-between flex`}>
+      <div className="pl-30 pr-30 pt-2 pb-2 fixed w-full">
+        <div className="justify-between flex">
           <div className="flex">
             <img
               src="app/shared/assets/logo-letter.svg"

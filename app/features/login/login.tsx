@@ -1,9 +1,7 @@
-'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Form } from 'react-router'
+import { useNavigate, useSubmit } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
@@ -21,8 +19,14 @@ import LogoDark from '@shared/assets/logo-dark'
 
 import { loginValidationFormSchema } from './validations'
 import { TypographyBase } from '@components/typography/typography-base'
+import { RoutesEnum } from '@routes'
+import { TypographyH1 } from '@components/typography/typography-h1'
+import type { AuthUserEntity } from '@services/user/post/post.entity'
 
 export function Login() {
+  const navigate = useNavigate()
+  const submit = useSubmit()
+
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
     resolver: zodResolver(loginValidationFormSchema),
     defaultValues: {
@@ -31,31 +35,46 @@ export function Login() {
     },
   })
 
+  const onSubmit = (data: z.infer<typeof loginValidationFormSchema>) => {
+    const user: AuthUserEntity = {
+      login: data.email,
+      password: data.password,
+    }
+
+    submit(user, {
+      method: 'post',
+      encType: 'application/json',
+    })
+  }
+
   return (
     <main>
       <div className="w-full h-screen bg-primary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
-          <CardHeader className="justify-center">
-            <LogoDark size="190" />
+          <CardHeader className="justify-center text-center">
+            <LogoDark size="130" />
+            <TypographyH1 className="font-bold text-2xl">
+              Faça Login
+            </TypographyH1>
           </CardHeader>
           <CardContent>
-            <Form method="post" className="grid gap-4">
+            <form
+              id="login-form"
+              onSubmit={form.handleSubmit(onSubmit)}
+              method="post"
+              className="grid gap-4"
+            >
               <FormProvider {...form}>
                 <FormField
                   control={form.control}
                   name="email"
-                  rules={{ required: true }}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-lg font-normal">
-                        Email
+                        E-mail
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Digite seu email"
-                          required
-                          {...field}
-                        />
+                        <Input placeholder="Digite seu e-mail" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -64,7 +83,6 @@ export function Login() {
                 <FormField
                   control={form.control}
                   name="password"
-                  rules={{ required: true }}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-lg font-normal">
@@ -74,7 +92,6 @@ export function Login() {
                         <Input
                           type="password"
                           placeholder="Digite sua senha"
-                          required
                           {...field}
                         />
                       </FormControl>
@@ -91,13 +108,17 @@ export function Login() {
                   Entrar
                 </Button>
               </FormProvider>
-            </Form>
+            </form>
           </CardContent>
           <CardFooter className="pt-4">
             <TypographyBase className="text-secondary font-normal">
               Ainda não tem conta?
             </TypographyBase>
-            <Button variant="link" className="pl-2 text-sm">
+            <Button
+              variant="link"
+              className="pl-2 text-sm"
+              onClick={() => navigate(RoutesEnum.REGISTER)}
+            >
               Criar conta
             </Button>
           </CardFooter>
