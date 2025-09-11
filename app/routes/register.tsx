@@ -6,7 +6,7 @@ import { redirect } from 'react-router'
 import { RoutesEnum } from '@routes'
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: 'Register' }, { name: 'description', content: '' }]
+  return [{ title: 'Registro' }, { name: 'description', content: '' }]
 }
 
 export default function RegisterRoute() {

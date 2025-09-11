@@ -13,6 +13,7 @@ import './app.css'
 import './mocks'
 
 import Loader from '@components/ui/loader'
+import { UserProvider } from '@shared/context/user-context'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -51,7 +52,17 @@ export default function App() {
   const isLoading =
     navigation.state === 'loading' || navigation.state === 'submitting'
 
-  return <>{isLoading ? <Loader isFullScreen /> : <Outlet />}</>
+  return (
+    <>
+      {isLoading ? (
+        <Loader isFullScreen />
+      ) : (
+        <UserProvider>
+          <Outlet />
+        </UserProvider>
+      )}
+    </>
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

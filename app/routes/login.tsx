@@ -3,6 +3,7 @@ import type { Route } from './+types/login'
 import { redirect } from 'react-router'
 import { RoutesEnum } from '@routes'
 import { authUser } from '@services/user/post/post.requests'
+import { setToken } from '@shared/auth/auth'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'Login' }, { name: 'description', content: '' }]
@@ -13,12 +14,13 @@ export default function LoginRoute() {
 }
 
 export async function clientAction({ request }: Route.ClientActionArgs) {
-  let data = await request.json()
-  let token = await authUser({ data })
+  const data = await request.json()
+  const { token } = await authUser({ data })
 
   if (!token) {
     return redirect(RoutesEnum.LOGIN)
   }
-  //TODO gerenciar cookie
+
+  setToken(token)
   return redirect(RoutesEnum.HOME)
 }
