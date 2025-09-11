@@ -1,6 +1,6 @@
 import type { DefaultError, RequestError } from '@api/types'
 
-export namespace PostCustomerBackendNS {
+export namespace PatchCustomerBackendNS {
   export type Params = Record<string, never>
 
   export type RequestBody = {}
@@ -10,7 +10,7 @@ export namespace PostCustomerBackendNS {
   export type Error = RequestError
 }
 
-export namespace PostCustomerFrontendNS {
+export namespace PatchCustomerFrontendNS {
   export interface FunctionArgs {
     data: {}
   }

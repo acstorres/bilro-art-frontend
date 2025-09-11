@@ -6,7 +6,7 @@ export async function getCustomer({
   customerId,
 }: GetCustomerNS.Params): Promise<GetCustomerNS.Response> {
   //TODO
-  const res = await privateAPI().get<GetCustomerNS.Response>(
+  const res = await privateAPI('fgdgdf').get<GetCustomerNS.Response>(
     `${CUSTOMER}/${customerId}`,
   )
 

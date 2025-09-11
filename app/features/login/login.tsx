@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Form } from 'react-router'
+import { Form, useNavigate } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
@@ -19,8 +19,12 @@ import LogoDark from '@shared/assets/logo-dark'
 
 import { loginValidationFormSchema } from './validations'
 import { TypographyBase } from '@components/typography/typography-base'
+import { RoutesEnum } from '@routes'
+import { TypographyH1 } from '@components/typography/typography-h1'
 
 export function Login() {
+  const navigate = useNavigate()
+
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
     resolver: zodResolver(loginValidationFormSchema),
     defaultValues: {
@@ -33,8 +37,11 @@ export function Login() {
     <main>
       <div className="w-full h-screen bg-primary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
-          <CardHeader className="justify-center">
-            <LogoDark size="190" />
+          <CardHeader className="justify-center text-center">
+            <LogoDark size="130" />
+            <TypographyH1 className="font-bold text-2xl">
+              Faça Login
+            </TypographyH1>
           </CardHeader>
           <CardContent>
             <Form method="post" className="grid gap-4">
@@ -46,11 +53,11 @@ export function Login() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-lg font-normal">
-                        Email
+                        E-mail
                       </FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Digite seu email"
+                          placeholder="Digite seu e-mail"
                           required
                           {...field}
                         />
@@ -95,7 +102,11 @@ export function Login() {
             <TypographyBase className="text-secondary font-normal">
               Ainda não tem conta?
             </TypographyBase>
-            <Button variant="link" className="pl-2 text-sm">
+            <Button
+              variant="link"
+              className="pl-2 text-sm"
+              onClick={() => navigate(RoutesEnum.REGISTER)}
+            >
               Criar conta
             </Button>
           </CardFooter>

@@ -12,8 +12,8 @@ export default function Header() {
 
   return (
     <header>
-      <div className={`pl-30 pr-30 pt-2 pb-2 fixed w-full`}>
-        <div className={`justify-between flex`}>
+      <div className="pl-30 pr-30 pt-2 pb-2 fixed w-full">
+        <div className="justify-between flex">
           <div className="flex">
             <img
               src="app/shared/assets/logo-letter.svg"
