@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { useNavigate, useSubmit } from 'react-router'
+import { Link, useSubmit } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
@@ -24,7 +24,6 @@ import { TypographyH1 } from '@components/typography/typography-h1'
 import type { AuthUserEntity } from '@services/user/post/post.entity'
 
 export function Login() {
-  const navigate = useNavigate()
   const submit = useSubmit()
 
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
@@ -96,9 +95,12 @@ export function Login() {
                         />
                       </FormControl>
                       <FormMessage>
-                        <Button variant="link" className="pl-0 pt-0 text-sm">
+                        <Link
+                          className="text-sm text-primary underline-offset-4 hover:underline"
+                          to={RoutesEnum.REGISTER}
+                        >
                           Esqueceu a senha?
-                        </Button>
+                        </Link>
                       </FormMessage>
                     </FormItem>
                   )}
@@ -114,13 +116,12 @@ export function Login() {
             <TypographyBase className="text-secondary font-normal">
               Ainda não tem conta?
             </TypographyBase>
-            <Button
-              variant="link"
-              className="pl-2 text-sm"
-              onClick={() => navigate(RoutesEnum.REGISTER)}
+            <Link
+              className="ml-2 text-sm text-primary underline-offset-4 hover:underline"
+              to={RoutesEnum.REGISTER}
             >
               Criar conta
-            </Button>
+            </Link>
           </CardFooter>
         </Card>
       </div>
