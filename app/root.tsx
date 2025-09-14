@@ -13,6 +13,7 @@ import './app.css'
 import './mocks'
 
 import Loader from '@components/ui/loader'
+import { AccessibilityMenu } from '@components/accessibility/accessibility-menu'
 import { UserProvider } from '@shared/context/user-context'
 
 export const links: Route.LinksFunction = () => [
@@ -58,7 +59,10 @@ export default function App() {
         <Loader isFullScreen />
       ) : (
         <UserProvider>
-          <Outlet />
+          <>
+            <Outlet />
+            <AccessibilityMenu />
+          </>
         </UserProvider>
       )}
     </>
