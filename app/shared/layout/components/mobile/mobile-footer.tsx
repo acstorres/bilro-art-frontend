@@ -1,6 +1,6 @@
 export default function MobileFooter() {
   return (
-    <div className="h-40 bg-[var(--calda-de-pudim)] pl-10 pr-10 pt-4 pb-4 justify-between flex flex-col">
+    <div className="h-40 bg-secondary pl-10 pr-10 pt-4 pb-4 justify-between flex flex-col">
       <div className="justify-center flex gap-4">
         <img
           src="app/shared/assets/logo-ifma.png"

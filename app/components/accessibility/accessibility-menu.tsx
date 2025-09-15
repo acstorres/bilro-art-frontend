@@ -15,9 +15,11 @@ import { Label } from '@components/ui/label'
 import { Button } from '@components/ui/button'
 import { AccessibilityEnum } from './types'
 import { Separator } from '@components/ui/separator'
+import { useTheme } from '@shared/hooks/use-theme'
 
 export function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
+  const { toggleHighContrastTheme } = useTheme()
   const {
     fontSize,
     setFontSize,
@@ -26,11 +28,20 @@ export function AccessibilityMenu() {
     resetSettings,
     isAtMinFontSize,
     isAtMaxFontSize,
-    isFontSizeCustom,
     isFontSizeReduced,
     isFontSizeIncreased,
     FONT_SIZE_INTERVAL,
   } = useAccessibility()
+
+  const onHighContrast = (option: AccessibilityEnum) => {
+    const value = toggleOption(option)
+    toggleHighContrastTheme(value)
+  }
+
+  const reset = () => {
+    resetSettings()
+    toggleHighContrastTheme(false)
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -46,17 +57,12 @@ export function AccessibilityMenu() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-16 right-0 bg-white dark:bg-zinc-900 shadow-xl rounded-2xl p-4 w-80 space-y-3"
+          className="absolute bottom-16 right-0 bg-card shadow-xl rounded-2xl p-4 w-80 space-y-3"
         >
           <h2 className="text-lg font-semibold mb-6">Acessibilidade visual</h2>
 
           <div className="flex items-center justify-between">
-            <Label
-              htmlFor="letter-spacing"
-              className={`text-base font-normal transition-colors ${
-                options.LETTER_SPACING && 'text-primary'
-              }`}
-            >
+            <Label htmlFor="letter-spacing" className={'text-base font-normal'}>
               Espaçamento
             </Label>
             <div className="flex items-center gap-2">
@@ -66,24 +72,14 @@ export function AccessibilityMenu() {
                 checked={options.LETTER_SPACING}
                 onClick={() => toggleOption(AccessibilityEnum.LETTER_SPACING)}
               />
-              <Type
-                size={18}
-                className={`text-base transition-colors ${
-                  options.LETTER_SPACING && 'text-primary'
-                }`}
-              />
+              <Type size={18} />
             </div>
           </div>
 
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-gray-200 dark:bg-foreground/50" />
 
           <div className="flex items-center justify-between">
-            <Label
-              htmlFor="high-contrast"
-              className={`text-base font-normal transition-colors ${
-                options.HIGH_CONTRAST && 'text-primary'
-              }`}
-            >
+            <Label htmlFor="high-contrast" className={'text-base font-normal'}>
               Alto contraste
             </Label>
             <div className="flex items-center gap-2">
@@ -91,25 +87,18 @@ export function AccessibilityMenu() {
                 id="high-contrast"
                 aria-label="Alto contraste"
                 checked={options.HIGH_CONTRAST}
-                onClick={() => toggleOption(AccessibilityEnum.HIGH_CONTRAST)}
+                onClick={() => onHighContrast(AccessibilityEnum.HIGH_CONTRAST)}
               />
-              <Contrast
-                size={18}
-                className={`text-base transition-colors ${
-                  options.HIGH_CONTRAST && 'text-primary'
-                }`}
-              />
+              <Contrast size={18} />
             </div>
           </div>
 
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-gray-200 dark:bg-foreground/50" />
 
           <div className="flex items-center justify-between">
             <Label
               htmlFor="highlight-links"
-              className={`text-base font-normal transition-colors ${
-                options.HIGHLIGHT_LINKS && 'text-primary'
-              }`}
+              className={'text-base font-normal'}
             >
               Destaque links
             </Label>
@@ -120,24 +109,14 @@ export function AccessibilityMenu() {
                 checked={options.HIGHLIGHT_LINKS}
                 onClick={() => toggleOption(AccessibilityEnum.HIGHLIGHT_LINKS)}
               />
-              <Link
-                size={18}
-                className={`text-base transition-colors ${
-                  options.HIGHLIGHT_LINKS && 'text-primary'
-                }`}
-              />
+              <Link size={18} />
             </div>
           </div>
 
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-gray-200 dark:bg-foreground/50" />
 
           <div className="flex items-center justify-between">
-            <Label
-              htmlFor="big-cursor"
-              className={`text-base font-normal transition-colors ${
-                options.BIG_CURSOR && 'text-primary'
-              }`}
-            >
+            <Label htmlFor="big-cursor" className={'text-base font-normal'}>
               Cursor grande
             </Label>
             <div className="flex items-center gap-2">
@@ -147,24 +126,14 @@ export function AccessibilityMenu() {
                 checked={options.BIG_CURSOR}
                 onClick={() => toggleOption(AccessibilityEnum.BIG_CURSOR)}
               />
-              <MousePointer
-                size={18}
-                className={`text-base transition-colors ${
-                  options.BIG_CURSOR && 'text-primary'
-                }`}
-              />
+              <MousePointer size={18} />
             </div>
           </div>
 
-          <Separator className="bg-gray-200" />
+          <Separator className="bg-gray-200 dark:bg-foreground/50" />
 
           <div className="flex items-center justify-between">
-            <Label
-              defaultValue={fontSize}
-              className={`text-base font-normal transition-colors ${
-                isFontSizeCustom() && 'text-primary'
-              }`}
-            >
+            <Label defaultValue={fontSize} className={'text-base font-normal'}>
               Tamanho do texto
             </Label>
             <div className="flex gap-2">
@@ -189,7 +158,7 @@ export function AccessibilityMenu() {
             </div>
           </div>
           <div className="justify-end flex mt-8">
-            <Button size={'sm'} variant={'default'} onClick={resetSettings}>
+            <Button size={'sm'} variant={'default'} onClick={reset}>
               Limpar definições
             </Button>
           </div>

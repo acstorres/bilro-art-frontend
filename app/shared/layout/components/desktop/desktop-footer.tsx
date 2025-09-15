@@ -1,6 +1,6 @@
 export default function DesktopFooter() {
   return (
-    <div className="h-80 bg-[var(--calda-de-pudim)] pl-30 pr-30 pt-12 pb-6 justify-between flex flex-col">
+    <div className="h-80 bg-secondary pl-30 pr-30 pt-12 pb-6 justify-between flex flex-col">
       <div className="justify-end flex gap-8">
         <img
           src="app/shared/assets/logo-ifma.png"

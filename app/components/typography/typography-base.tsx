@@ -5,7 +5,10 @@ import { cn } from '@lib/utils'
 function TypographyBase({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
-      className={cn('text-base leading-none font-medium', className)}
+      className={cn(
+        'text-base text-secondary dark:text-foreground leading-none font-medium',
+        className,
+      )}
       {...props}
     ></span>
   )
