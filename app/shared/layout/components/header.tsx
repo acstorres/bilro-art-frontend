@@ -1,14 +1,18 @@
 import { Nav } from './nav'
-import { Handbag, Search, User } from 'lucide-react'
+import { Handbag, Moon, Search, Sun, User } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Button } from '@components/ui/button'
 import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
+import { Switch } from '@components/ui/switch'
+import { useTheme } from '@shared/hooks/use-theme'
 
 export default function Header() {
   let navigate = useNavigate()
 
   const gotToLogin = () => navigate(RoutesEnum.LOGIN)
+
+  const { theme, isDark, toggleTheme } = useTheme()
 
   return (
     <header>
@@ -29,7 +33,22 @@ export default function Header() {
             />
           </div>
           <Nav />
-          <div className="min-w-30 flex justify-end self-center">
+
+          <div className="min-w-30 flex justify-end self-center gap-0.5">
+            <div className="border-r-2 border-foreground/10 pr-4 mr-2 self-center">
+              <Switch
+                aria-label="Alterar tema"
+                checked={isDark()}
+                value={theme}
+                onClick={() => toggleTheme()}
+              >
+                {isDark() ? (
+                  <Moon className="w-4 h-4" />
+                ) : (
+                  <Sun className="w-4 h-4" />
+                )}
+              </Switch>
+            </div>
             <Button aria-label="search" variant="ghost">
               <Search size={25} strokeWidth={1.5} />
             </Button>

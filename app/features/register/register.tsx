@@ -28,9 +28,9 @@ export function Register() {
   const form = useForm<z.infer<typeof registerValidationFormSchema>>({
     resolver: zodResolver(registerValidationFormSchema),
     defaultValues: {
-      email: undefined,
-      password: undefined,
-      confirmPassword: undefined,
+      email: '',
+      password: '',
+      confirmPassword: '',
       isTermsAccepted: false,
     },
   })
@@ -49,11 +49,12 @@ export function Register() {
 
   return (
     <main>
-      <div className="w-full h-screen bg-primary justify-center flex p-4">
+      <div className="w-full h-screen bg-primary dark:bg-secondary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
           <CardContent>
             <CardHeader className="justify-center text-center">
               <LogoDark size="130" />
+
               <TypographyH1 className="font-bold text-2xl">
                 Crie sua conta
               </TypographyH1>

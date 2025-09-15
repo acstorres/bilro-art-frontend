@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { useNavigate, useSubmit } from 'react-router'
+import { Link, useSubmit } from 'react-router'
 
 import { Input } from '@components/ui/input'
 import { Button } from '@components/ui/button'
@@ -22,9 +22,9 @@ import { TypographyBase } from '@components/typography/typography-base'
 import { RoutesEnum } from '@routes'
 import { TypographyH1 } from '@components/typography/typography-h1'
 import type { AuthUserEntity } from '@services/user/post/post.entity'
+import { useTheme } from '@shared/hooks/use-theme'
 
 export function Login() {
-  const navigate = useNavigate()
   const submit = useSubmit()
 
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
@@ -47,12 +47,15 @@ export function Login() {
     })
   }
 
+  const { theme } = useTheme()
+
   return (
     <main>
-      <div className="w-full h-screen bg-primary justify-center flex p-4">
+      <div className="w-full h-screen bg-primary dark:bg-secondary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
           <CardHeader className="justify-center text-center">
             <LogoDark size="130" />
+
             <TypographyH1 className="font-bold text-2xl">
               Faça Login
             </TypographyH1>
@@ -96,9 +99,12 @@ export function Login() {
                         />
                       </FormControl>
                       <FormMessage>
-                        <Button variant="link" className="pl-0 pt-0 text-sm">
+                        <Link
+                          className="text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
+                          to={RoutesEnum.REGISTER}
+                        >
                           Esqueceu a senha?
-                        </Button>
+                        </Link>
                       </FormMessage>
                     </FormItem>
                   )}
@@ -111,16 +117,15 @@ export function Login() {
             </form>
           </CardContent>
           <CardFooter className="pt-4">
-            <TypographyBase className="text-secondary font-normal">
+            <TypographyBase className="font-normal">
               Ainda não tem conta?
             </TypographyBase>
-            <Button
-              variant="link"
-              className="pl-2 text-sm"
-              onClick={() => navigate(RoutesEnum.REGISTER)}
+            <Link
+              className="ml-2 text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
+              to={RoutesEnum.REGISTER}
             >
               Criar conta
-            </Button>
+            </Link>
           </CardFooter>
         </Card>
       </div>
