@@ -15,9 +15,11 @@ import { Label } from '@components/ui/label'
 import { Button } from '@components/ui/button'
 import { AccessibilityEnum } from './types'
 import { Separator } from '@components/ui/separator'
+import { useTheme } from '@shared/hooks/use-theme'
 
 export function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
+  const { toggleHighContrastTheme } = useTheme()
   const {
     fontSize,
     setFontSize,
@@ -30,6 +32,16 @@ export function AccessibilityMenu() {
     isFontSizeIncreased,
     FONT_SIZE_INTERVAL,
   } = useAccessibility()
+
+  const onHighContrast = (option: AccessibilityEnum) => {
+    const value = toggleOption(option)
+    toggleHighContrastTheme(value)
+  }
+
+  const reset = () => {
+    resetSettings()
+    toggleHighContrastTheme(false)
+  }
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -45,7 +57,7 @@ export function AccessibilityMenu() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-16 right-0 bg-white dark:bg-zinc-900 shadow-xl rounded-2xl p-4 w-80 space-y-3"
+          className="absolute bottom-16 right-0 bg-card shadow-xl rounded-2xl p-4 w-80 space-y-3"
         >
           <h2 className="text-lg font-semibold mb-6">Acessibilidade visual</h2>
 
@@ -75,7 +87,7 @@ export function AccessibilityMenu() {
                 id="high-contrast"
                 aria-label="Alto contraste"
                 checked={options.HIGH_CONTRAST}
-                onClick={() => toggleOption(AccessibilityEnum.HIGH_CONTRAST)}
+                onClick={() => onHighContrast(AccessibilityEnum.HIGH_CONTRAST)}
               />
               <Contrast size={18} />
             </div>
@@ -146,7 +158,7 @@ export function AccessibilityMenu() {
             </div>
           </div>
           <div className="justify-end flex mt-8">
-            <Button size={'sm'} variant={'default'} onClick={resetSettings}>
+            <Button size={'sm'} variant={'default'} onClick={reset}>
               Limpar definições
             </Button>
           </div>

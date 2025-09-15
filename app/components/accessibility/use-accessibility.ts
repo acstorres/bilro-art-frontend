@@ -39,7 +39,6 @@ export function useAccessibility() {
       'letter-spacing',
       options.LETTER_SPACING,
     )
-    document.documentElement.classList.toggle('contrast', options.HIGH_CONTRAST)
     document.documentElement.classList.toggle(
       'highlight-links',
       options.HIGHLIGHT_LINKS,
@@ -52,6 +51,8 @@ export function useAccessibility() {
       ...options,
       [key]: !options[key],
     })
+
+    return !options[key]
   }
 
   const resetSettings = () => {
@@ -63,6 +64,7 @@ export function useAccessibility() {
     fontSize,
     setFontSize,
     options,
+    setOptions,
     toggleOption,
     resetSettings,
     DEFAULT_FONT_SIZE,
