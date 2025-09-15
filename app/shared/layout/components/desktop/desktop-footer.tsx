@@ -4,13 +4,13 @@ export default function DesktopFooter() {
       <div className="justify-end flex gap-8">
         <img
           src="app/shared/assets/logo-ifma.png"
-          alt="logo-instituo-federal-maranhao"
+          alt="Logo IFMA"
           width={90}
           height={90}
         />
         <img
           src="app/shared/assets/logo-bg-repeat.png"
-          alt="logo-bilro-arte-arco"
+          alt="Logo Bilro Arte"
           width={90}
           height={90}
         />
