@@ -29,8 +29,6 @@ export function useAccessibility() {
 
   const isFontSizeIncreased = () => fontSize > DEFAULT_FONT_SIZE
 
-  const isFontSizeCustom = () => fontSize !== DEFAULT_FONT_SIZE
-
   const isAtMinFontSize = () => fontSize === MIN_FONT_SIZE
 
   const isAtMaxFontSize = () => fontSize === MAX_FONT_SIZE
@@ -70,7 +68,6 @@ export function useAccessibility() {
     DEFAULT_FONT_SIZE,
     isAtMinFontSize,
     isAtMaxFontSize,
-    isFontSizeCustom,
     isFontSizeReduced,
     isFontSizeIncreased,
     FONT_SIZE_INTERVAL,

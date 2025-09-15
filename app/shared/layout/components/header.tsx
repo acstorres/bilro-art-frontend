@@ -34,20 +34,21 @@ export default function Header() {
           </div>
           <Nav />
 
-          <Switch
-            aria-label="Alterar tema"
-            checked={isDark()}
-            value={theme}
-            onClick={() => toggleTheme()}
-          >
-            {isDark() ? (
-              <Moon className="w-4 h-4 " />
-            ) : (
-              <Sun className="w-4 h-4" />
-            )}
-          </Switch>
-
-          <div className="min-w-30 flex justify-end self-center">
+          <div className="min-w-30 flex justify-end self-center gap-0.5">
+            <div className="border-r-2 border-foreground/10 pr-4 mr-2 self-center">
+              <Switch
+                aria-label="Alterar tema"
+                checked={isDark()}
+                value={theme}
+                onClick={() => toggleTheme()}
+              >
+                {isDark() ? (
+                  <Moon className="w-4 h-4" />
+                ) : (
+                  <Sun className="w-4 h-4" />
+                )}
+              </Switch>
+            </div>
             <Button aria-label="search" variant="ghost">
               <Search size={25} strokeWidth={1.5} />
             </Button>

@@ -22,6 +22,7 @@ import { TypographyBase } from '@components/typography/typography-base'
 import { RoutesEnum } from '@routes'
 import { TypographyH1 } from '@components/typography/typography-h1'
 import type { AuthUserEntity } from '@services/user/post/post.entity'
+import { useTheme } from '@shared/hooks/use-theme'
 
 export function Login() {
   const submit = useSubmit()
@@ -46,12 +47,15 @@ export function Login() {
     })
   }
 
+  const { theme } = useTheme()
+
   return (
     <main>
-      <div className="w-full h-screen bg-primary justify-center flex p-4">
+      <div className="w-full h-screen bg-primary dark:bg-secondary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
           <CardHeader className="justify-center text-center">
             <LogoDark size="130" />
+
             <TypographyH1 className="font-bold text-2xl">
               Faça Login
             </TypographyH1>
@@ -96,7 +100,7 @@ export function Login() {
                       </FormControl>
                       <FormMessage>
                         <Link
-                          className="text-sm text-primary underline-offset-4 hover:underline"
+                          className="text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
                           to={RoutesEnum.REGISTER}
                         >
                           Esqueceu a senha?
@@ -113,11 +117,11 @@ export function Login() {
             </form>
           </CardContent>
           <CardFooter className="pt-4">
-            <TypographyBase className="text-secondary font-normal">
+            <TypographyBase className="font-normal">
               Ainda não tem conta?
             </TypographyBase>
             <Link
-              className="ml-2 text-sm text-primary underline-offset-4 hover:underline"
+              className="ml-2 text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
               to={RoutesEnum.REGISTER}
             >
               Criar conta
