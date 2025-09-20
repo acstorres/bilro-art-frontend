@@ -18,20 +18,20 @@ export default function Header() {
     <header>
       <div className="pl-30 pr-30 pt-2 pb-2 fixed w-full">
         <div className="justify-between flex">
-          <div className="flex">
+          {isDark() ? (
             <img
-              src="app/shared/assets/logo-letter.svg"
-              alt="logo-letter"
-              width={50}
-              height={50}
+              src="app/shared/assets/logo-name-white.png"
+              alt="logo-name-white"
+              width={100}
             />
+          ) : (
             <img
               src="app/shared/assets/logo-name.svg"
               alt="logo-name"
               width={120}
-              height={120}
             />
-          </div>
+          )}
+
           <Nav />
 
           <div className="min-w-30 flex justify-end self-center gap-0.5">
