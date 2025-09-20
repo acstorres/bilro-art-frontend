@@ -1,6 +1,6 @@
 export default function MobileFooter() {
   return (
-    <div className="h-40 bg-secondary pl-10 pr-10 pt-4 pb-4 justify-between flex flex-col">
+    <div className="h-40 bg-calda-de-pudim dark:bg-secondary pl-10 pr-10 pt-4 pb-4 justify-between flex flex-col">
       <div className="justify-center flex gap-4">
         <img
           src="app/shared/assets/logo-ifma.png"
@@ -15,7 +15,7 @@ export default function MobileFooter() {
           height={45}
         />
       </div>
-      <div className="border-t border-white/30 mt-2 pt-4 flex flex-col items-center text-center text-white/80 font-extralight text-xs gap-1">
+      <div className="border-t border-white/50 mt-2 pt-4 flex flex-col items-center text-center text-white font-extralight text-xs gap-1">
         <p>
           Copyright © {new Date().getFullYear()}, BilroArte. Todos os direitos
           reservados.
