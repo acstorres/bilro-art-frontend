@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import type { AccessibilityEnum, AccessibilityOptions } from './types'
+import { AccessibilityEnum, type AccessibilityOptions } from './types'
 import useLocalStorage from '@shared/hooks/use-local-storage'
 
 export function useAccessibility() {
@@ -9,7 +9,8 @@ export function useAccessibility() {
   const FONT_SIZE_INTERVAL = 10
 
   const defaultOptions: AccessibilityOptions = {
-    HIGH_CONTRAST: false,
+    HIGH_CONTRAST_LIGHT: false,
+    HIGH_CONTRAST_DARK: false,
     LETTER_SPACING: false,
     HIGHLIGHT_LINKS: false,
     BIG_CURSOR: false,
@@ -47,10 +48,26 @@ export function useAccessibility() {
   }, [fontSize, options])
 
   const toggleOption = (key: AccessibilityEnum) => {
-    setOptions({
-      ...options,
-      [key]: !options[key],
-    })
+    if (key === AccessibilityEnum.HIGH_CONTRAST_LIGHT && options[key] === false)
+      setOptions({
+        ...options,
+        [AccessibilityEnum.HIGH_CONTRAST_LIGHT]: true,
+        [AccessibilityEnum.HIGH_CONTRAST_DARK]: false,
+      })
+    else if (
+      key === AccessibilityEnum.HIGH_CONTRAST_DARK &&
+      options[key] === false
+    )
+      setOptions({
+        ...options,
+        [AccessibilityEnum.HIGH_CONTRAST_DARK]: true,
+        [AccessibilityEnum.HIGH_CONTRAST_LIGHT]: false,
+      })
+    else
+      setOptions({
+        ...options,
+        [key]: !options[key],
+      })
 
     return !options[key]
   }

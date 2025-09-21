@@ -1,10 +1,9 @@
 import { Nav } from './nav'
-import { Handbag, Moon, Search, Sun, User } from 'lucide-react'
+import { Handbag, Search, User } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Button } from '@components/ui/button'
 import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
-import { Switch } from '@components/ui/switch'
 import { useTheme } from '@shared/hooks/use-theme'
 
 export default function Header() {
@@ -12,43 +11,28 @@ export default function Header() {
 
   const gotToLogin = () => navigate(RoutesEnum.LOGIN)
 
-  const { theme, isDark, toggleTheme } = useTheme()
+  const { isDark } = useTheme()
 
   return (
     <header>
-      <div className="pl-30 pr-30 pt-2 pb-2 fixed w-full">
+      <div className="pl-30 pr-30 pt-2 pb-2 fixed top-0 w-full bg-background z-50">
         <div className="justify-between flex">
           {isDark() ? (
             <img
-              src="app/shared/assets/logo-name-white.png"
+              src="app/shared/assets/logo/logo-name-white.png"
               alt="logo-name-white"
-              width={100}
+              width={170}
             />
           ) : (
             <img
-              src="app/shared/assets/logo-name.svg"
+              src="app/shared/assets/logo/logo-and-name.png"
               alt="logo-name"
-              width={120}
+              width={170}
             />
           )}
-
           <Nav />
 
           <div className="min-w-30 flex justify-end self-center gap-0.5">
-            <div className="border-r-2 border-foreground/10 pr-4 mr-2 self-center">
-              <Switch
-                aria-label="Alterar tema"
-                checked={isDark()}
-                value={theme}
-                onClick={() => toggleTheme()}
-              >
-                {isDark() ? (
-                  <Moon className="w-4 h-4" />
-                ) : (
-                  <Sun className="w-4 h-4" />
-                )}
-              </Switch>
-            </div>
             <Button aria-label="search" variant="ghost">
               <Search size={25} strokeWidth={1.5} />
             </Button>

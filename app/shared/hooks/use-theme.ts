@@ -1,14 +1,10 @@
 import { useEffect } from 'react'
 import useLocalStorage from './use-local-storage'
-import { useAccessibility } from '@components/accessibility/use-accessibility'
-import { AccessibilityEnum } from '@components/accessibility/types'
 
 type Theme = 'light' | 'dark' | 'high-contrast-light' | 'high-contrast-dark'
 
 export function useTheme() {
   const [theme, setTheme] = useLocalStorage<Theme>('theme', 'light')
-  const { options: accessibilityOptions, setOptions: setAccessibilityOptions } =
-    useAccessibility()
 
   useEffect(() => {
     const themes: Theme[] = [
@@ -22,20 +18,14 @@ export function useTheme() {
     if (themes.includes(theme)) root.classList.add(theme)
   }, [theme])
 
-  const toggleTheme = () => {
-    setTheme(theme.includes('dark') ? 'light' : 'dark')
-    setAccessibilityOptions({
-      ...accessibilityOptions,
-      [AccessibilityEnum.HIGH_CONTRAST]: false,
-    })
+  const toggleThemeHighContrastLight = (isHighContrastLight: boolean) => {
+    if (isHighContrastLight) setTheme('high-contrast-light')
+    else setTheme('light')
   }
 
-  const toggleHighContrastTheme = (isHighContrast: boolean) => {
-    if (isHighContrast)
-      setTheme(
-        theme.includes('dark') ? 'high-contrast-dark' : 'high-contrast-light',
-      )
-    else setTheme(theme.includes('dark') ? 'dark' : 'light')
+  const toggleThemeHighContrastDark = (isHighContrastDark: boolean) => {
+    if (isHighContrastDark) setTheme('high-contrast-dark')
+    else setTheme('light')
   }
 
   const isDark = () => theme.includes('dark')
@@ -44,7 +34,7 @@ export function useTheme() {
     theme,
     isDark,
     setTheme,
-    toggleTheme,
-    toggleHighContrastTheme,
+    toggleThemeHighContrastLight,
+    toggleThemeHighContrastDark,
   }
 }
