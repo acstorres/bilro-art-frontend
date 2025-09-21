@@ -1,6 +1,6 @@
 import { Nav } from './nav'
 import { Handbag, Search, User } from 'lucide-react'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { Button } from '@components/ui/button'
 import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
@@ -17,19 +17,22 @@ export default function Header() {
     <header>
       <div className="pl-30 pr-30 pt-2 pb-2 fixed top-0 w-full bg-background z-50">
         <div className="justify-between flex">
-          {isDark() ? (
-            <img
-              src="app/shared/assets/logo/logo-name-white.png"
-              alt="logo-name-white"
-              width={170}
-            />
-          ) : (
-            <img
-              src="app/shared/assets/logo/logo-and-name.png"
-              alt="logo-name"
-              width={170}
-            />
-          )}
+          <Link className="underline" to={RoutesEnum.HOME}>
+            {isDark() ? (
+              <img
+                src="app/shared/assets/logo/logo-name-white.png"
+                alt="logo-name-white"
+                width={170}
+              />
+            ) : (
+              <img
+                src="app/shared/assets/logo/logo-and-name.png"
+                alt="logo-name"
+                width={170}
+              />
+            )}
+          </Link>
+
           <Nav />
 
           <div className="min-w-30 flex justify-end self-center gap-0.5">
