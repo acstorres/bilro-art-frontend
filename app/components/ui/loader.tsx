@@ -39,7 +39,7 @@ const Loader: React.FC<LoaderProps> = ({
       `}</style>
 
       <img
-        src="app/shared/assets/logo.png"
+        src="app/shared/assets/logo/logo.png"
         alt={label}
         width={size}
         height={size}

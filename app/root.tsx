@@ -15,6 +15,7 @@ import './mocks'
 import Loader from '@components/ui/loader'
 import { AccessibilityMenu } from '@components/accessibility/accessibility-menu'
 import { UserProvider } from '@shared/context/user-context'
+import Hidden from '@components/ui/hidden'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -61,7 +62,9 @@ export default function App() {
         <UserProvider>
           <>
             <Outlet />
-            <AccessibilityMenu />
+            <Hidden bellow="tablet">
+              <AccessibilityMenu />
+            </Hidden>
           </>
         </UserProvider>
       )}

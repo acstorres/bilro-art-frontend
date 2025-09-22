@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Hidden>
 
       <main>
-        <div className="min-h-[calc(100dvh-8.5rem)] overflow-y-auto pt-16">
+        <div className="min-h-[calc(100dvh-8.5rem)] overflow-y-auto mt-12">
           {children}
         </div>
       </main>
