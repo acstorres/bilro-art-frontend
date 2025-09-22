@@ -6,7 +6,7 @@ function TypographyBase({ className, ...props }: React.ComponentProps<'span'>) {
   return (
     <span
       className={cn(
-        'text-base text-secondary dark:text-foreground leading-none font-medium',
+        'text-base text-foreground leading-none font-normal',
         className,
       )}
       {...props}

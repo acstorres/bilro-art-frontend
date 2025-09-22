@@ -15,8 +15,6 @@ import {
 } from '@components/ui/form'
 import { Card, CardContent, CardFooter, CardHeader } from '@components/ui/card'
 
-import LogoDark from '@shared/assets/logo-dark'
-
 import { loginValidationFormSchema } from './validations'
 import { TypographyBase } from '@components/typography/typography-base'
 import { RoutesEnum } from '@routes'
@@ -26,6 +24,7 @@ import { useTheme } from '@shared/hooks/use-theme'
 
 export function Login() {
   const submit = useSubmit()
+  const { isDark } = useTheme()
 
   const form = useForm<z.infer<typeof loginValidationFormSchema>>({
     resolver: zodResolver(loginValidationFormSchema),
@@ -47,16 +46,27 @@ export function Login() {
     })
   }
 
-  const { theme } = useTheme()
-
   return (
     <main>
       <div className="w-full h-screen bg-primary dark:bg-secondary justify-center flex p-4">
         <Card className="w-full max-w-sm h-min self-center gap-0">
           <CardHeader className="justify-center text-center">
-            <LogoDark size="130" />
-
-            <TypographyH1 className="font-bold text-2xl">
+            <Link to={RoutesEnum.HOME}>
+              {isDark() ? (
+                <img
+                  src="app/shared/assets/logo/logo-and-name-white.png"
+                  alt="Ir para home"
+                  width={200}
+                />
+              ) : (
+                <img
+                  src="app/shared/assets/logo/logo-and-name.png"
+                  alt="Ir para home"
+                  width={200}
+                />
+              )}
+            </Link>
+            <TypographyH1 className="font-bold text-lg">
               Faça Login
             </TypographyH1>
           </CardHeader>

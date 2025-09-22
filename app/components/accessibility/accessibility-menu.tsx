@@ -3,11 +3,12 @@ import { motion } from 'framer-motion'
 import {
   ZoomIn,
   ZoomOut,
-  Contrast,
   Link,
   MousePointer,
   PersonStanding,
   Type,
+  Sun,
+  Moon,
 } from 'lucide-react'
 import { useAccessibility } from './use-accessibility'
 import { Switch } from '@components/ui/switch'
@@ -19,7 +20,12 @@ import { useTheme } from '@shared/hooks/use-theme'
 
 export function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
-  const { toggleHighContrastTheme } = useTheme()
+  const {
+    setTheme,
+    toggleThemeHighContrastDark,
+    toggleThemeHighContrastLight,
+  } = useTheme()
+
   const {
     fontSize,
     setFontSize,
@@ -33,14 +39,19 @@ export function AccessibilityMenu() {
     FONT_SIZE_INTERVAL,
   } = useAccessibility()
 
-  const onHighContrast = (option: AccessibilityEnum) => {
+  const onHighContrastLight = (option: AccessibilityEnum) => {
     const value = toggleOption(option)
-    toggleHighContrastTheme(value)
+    toggleThemeHighContrastLight(value)
+  }
+
+  const onHighContrastDark = (option: AccessibilityEnum) => {
+    const value = toggleOption(option)
+    toggleThemeHighContrastDark(value)
   }
 
   const reset = () => {
     resetSettings()
-    toggleHighContrastTheme(false)
+    setTheme('light')
   }
 
   return (
@@ -79,17 +90,44 @@ export function AccessibilityMenu() {
           <Separator className="bg-gray-200 dark:bg-foreground/50" />
 
           <div className="flex items-center justify-between">
-            <Label htmlFor="high-contrast" className={'text-base font-normal'}>
-              Alto contraste
+            <Label
+              htmlFor="high-contrast-light"
+              className={'text-base font-normal'}
+            >
+              Alto contraste claro
             </Label>
             <div className="flex items-center gap-2">
               <Switch
-                id="high-contrast"
-                aria-label="Alto contraste"
-                checked={options.HIGH_CONTRAST}
-                onClick={() => onHighContrast(AccessibilityEnum.HIGH_CONTRAST)}
+                id="high-contrast-light"
+                aria-label="Alto contraste claro"
+                checked={options.HIGH_CONTRAST_LIGHT}
+                onClick={() =>
+                  onHighContrastLight(AccessibilityEnum.HIGH_CONTRAST_LIGHT)
+                }
               />
-              <Contrast size={18} />
+              <Sun size={18} />
+            </div>
+          </div>
+
+          <Separator className="bg-gray-200 dark:bg-foreground/50" />
+
+          <div className="flex items-center justify-between">
+            <Label
+              htmlFor="high-contrast-dark"
+              className={'text-base font-normal'}
+            >
+              Alto contraste escuro
+            </Label>
+            <div className="flex items-center gap-2">
+              <Switch
+                id="high-contrast-dark"
+                aria-label="Alto contraste escuro"
+                checked={options.HIGH_CONTRAST_DARK}
+                onClick={() =>
+                  onHighContrastDark(AccessibilityEnum.HIGH_CONTRAST_DARK)
+                }
+              />
+              <Moon size={18} />
             </div>
           </div>
 
