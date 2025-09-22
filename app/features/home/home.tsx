@@ -20,6 +20,9 @@ export function Home() {
           </Link>
         </div>
       </div>
+      <Section>
+        <TypographyH2 className="text-2xl">Mais vendidos</TypographyH2>
+      </Section>
 
       <Section>
         <div className="flex flex-col items-center text-center lg:text-start lg:block">
