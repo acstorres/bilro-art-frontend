@@ -110,7 +110,7 @@ export function Login() {
                       </FormControl>
                       <FormMessage>
                         <Link
-                          className="text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
+                          className="text-base text-primary-light dark:text-primary-light underline-offset-4 hover:underline"
                           to={RoutesEnum.REGISTER}
                         >
                           Esqueceu a senha?
@@ -131,7 +131,7 @@ export function Login() {
               Ainda não tem conta?
             </TypographyBase>
             <Link
-              className="ml-2 text-base text-primary dark:text-primary-light underline-offset-4 hover:underline"
+              className="ml-2 text-base text-primary-light dark:text-primary-light underline-offset-4 hover:underline"
               to={RoutesEnum.REGISTER}
             >
               Criar conta

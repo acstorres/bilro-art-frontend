@@ -154,14 +154,14 @@ export function Register() {
                             Li e aceito os{' '}
                             <Button
                               variant="link"
-                              className="text-sm font-bold inline p-0 h-6"
+                              className="text-sm font-bold inline p-0 h-6 text-primary-light"
                             >
                               Termos de Uso
                             </Button>{' '}
                             e as{' '}
                             <Button
                               variant="link"
-                              className="text-sm font-bold inline p-0 h-6"
+                              className="text-sm font-bold inline p-0 h-6 text-primary-light"
                             >
                               Políticas de Privacidade
                             </Button>

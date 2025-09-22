@@ -11,12 +11,12 @@ export function Home() {
   return (
     <Layout>
       <div className="relative w-full h-90 lg:h-130 flex">
-        <div className="bg-[url(/app/shared/assets/images/art06.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-75" />
-        <div className="bg-[url(/app/shared/assets/images/art07.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-75" />
+        <div className="bg-[url(/app/shared/assets/images/art06.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-70" />
+        <div className="bg-[url(/app/shared/assets/images/art07.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-70" />
 
         <div className="absolute inset-0 flex flex-col justify-center items-center z-10 text-white gap-4 font-medium">
           <div className="text-4xl">Conheça o artesanato</div>
-          <Link className="underline" to={RoutesEnum.REGISTER}>
+          <Link className="underline text-lg" to={RoutesEnum.REGISTER}>
             Ver produtos
           </Link>
         </div>
