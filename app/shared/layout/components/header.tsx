@@ -1,16 +1,12 @@
 import { Nav } from './nav'
 import { Handbag, Search, User } from 'lucide-react'
-import { Link, useNavigate } from 'react-router'
+import { Link } from 'react-router'
 import { Button } from '@components/ui/button'
 import { RoutesEnum } from '@routes'
 import { Badge } from '@components/ui/badge'
 import { useTheme } from '@shared/hooks/use-theme'
 
 export default function Header() {
-  let navigate = useNavigate()
-
-  const gotToLogin = () => navigate(RoutesEnum.LOGIN)
-
   const { isDark } = useTheme()
 
   return (
@@ -20,7 +16,7 @@ export default function Header() {
           <Link className="underline" to={RoutesEnum.HOME}>
             {isDark() ? (
               <img
-                src="app/shared/assets/logo/logo-name-white.png"
+                src="app/shared/assets/logo/logo-and-name-white.png"
                 alt="logo-name-white"
                 width={170}
               />
@@ -39,13 +35,13 @@ export default function Header() {
             <Button aria-label="search" variant="ghost">
               <Search size={25} strokeWidth={1.5} />
             </Button>
-            <Button
+            <Link
               aria-label="login-register"
-              variant="ghost"
-              onClick={() => gotToLogin()}
+              className="pl-2 pr-2 pt-1 pb-1 rounded-md hover:bg-foreground/5"
+              to={RoutesEnum.LOGIN}
             >
               <User size={25} strokeWidth={1.5} />
-            </Button>
+            </Link>
             <Button aria-label="bag" variant="ghost">
               <Badge
                 className="h-4 min-w-4 rounded-full px-1 text-xs font-light tabular-nums z-10 absolute mt-5 mr-5"

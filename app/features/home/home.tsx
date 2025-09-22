@@ -5,12 +5,12 @@ import { CraftsmanCard } from './components/craftsman-card'
 import Section from '@shared/layout/components/section'
 import { TypographyH2 } from '@components/typography/typography-h2'
 import { TypographyBase } from '@components/typography/typography-base'
-import { VideoPlayer } from '@components/video-player/video-player'
+import { BackgroundVideo } from '@components/background-video/background-video'
 
 export function Home() {
   return (
     <Layout>
-      <div className="relative w-full h-130 flex">
+      <div className="relative w-full h-90 lg:h-130 flex">
         <div className="bg-[url(/app/shared/assets/images/art06.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-75" />
         <div className="bg-[url(/app/shared/assets/images/art07.png)] bg-no-repeat bg-cover bg-center w-1/2 brightness-75" />
 
@@ -21,11 +21,15 @@ export function Home() {
           </Link>
         </div>
       </div>
-      <Section>
-        <TypographyH2 className="text-2xl">Mais vendidos</TypographyH2>
-      </Section>
 
-      <VideoPlayer />
+      <Section>
+        <div className="flex flex-col items-center text-center lg:text-start lg:block pt-10">
+          <TypographyH2 className="text-2xl">Mais vendidos</TypographyH2>
+          <TypographyBase className="text-sm">
+            Explore nossa coleção e leve um pedaço da história para casa!
+          </TypographyBase>
+        </div>
+      </Section>
 
       <Section>
         <div className="flex flex-col items-center text-center lg:text-start lg:block">
@@ -51,8 +55,20 @@ export function Home() {
         </div>
       </Section>
 
-      <div className="justify-center flex text-2xl">
-        #BilroArte | @bilroarte
+      <Section>
+        <div className="flex justify-center text-center pt-10 pb-10">
+          <TypographyBase className="text-lg lg:text-2xl">
+            "BilroArte é joia em renda! Com exclusividade e autenticidade
+            brasileira."
+          </TypographyBase>
+        </div>
+      </Section>
+
+      <div className="relative overflow-hidden w-full h-70 lg:h-140">
+        <BackgroundVideo
+          src="app/shared/assets/videos/lace-making.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
     </Layout>
   )
