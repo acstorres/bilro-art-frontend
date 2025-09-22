@@ -5,6 +5,7 @@ import { CraftsmanCard } from './components/craftsman-card'
 import Section from '@shared/layout/components/section'
 import { TypographyH2 } from '@components/typography/typography-h2'
 import { TypographyBase } from '@components/typography/typography-base'
+import { VideoPlayer } from '@components/video-player/video-player'
 
 export function Home() {
   return (
@@ -23,6 +24,8 @@ export function Home() {
       <Section>
         <TypographyH2 className="text-2xl">Mais vendidos</TypographyH2>
       </Section>
+
+      <VideoPlayer />
 
       <Section>
         <div className="flex flex-col items-center text-center lg:text-start lg:block">
