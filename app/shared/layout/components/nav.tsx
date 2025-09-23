@@ -1,3 +1,4 @@
+import { TypographyBase } from '@components/typography/typography-base'
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -6,189 +7,102 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@components/ui/navigation-menu'
+import { RoutesEnum } from '@routes'
 import { Link } from 'react-router'
 
-// const components: { title: string; href: string; description: string }[] = [
-//   {
-//     title: 'Sobre o BilroArt',
-//     href: '/docs/primitives/alert-dialog',
-//     description:
-//       'A modal dialog that interrupts the user with important content and expects a response.',
-//   },
-//   {
-//     title: 'Artesãos',
-//     href: '/docs/primitives/hover-card',
-//     description:
-//       'For sighted users to preview content available behind a link.',
-//   },
-//   {
-//     title: 'Produtos',
-//     href: '/docs/primitives/progress',
-//     description:
-//       'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-//   },
-//   {
-//     title: 'Contato',
-//     href: '/docs/primitives/scroll-area',
-//     description: 'Visually or semantically separates content.',
-//   },
-// ]
+interface MenuItem {
+  title: string
+  href?: string
+  components?: MenuItem[]
+  image?: boolean
+}
+
+const menuList: MenuItem[] = [
+  {
+    title: 'Institucional',
+    href: '/docs/primitives/hover-card',
+  },
+  {
+    title: 'Feiras',
+    href: '/docs/primitives/hover-card',
+  },
+  {
+    title: 'Produtos',
+    image: true,
+    components: [
+      {
+        title: 'Capas',
+        href: '/docs/primitives/hover-card',
+      },
+      {
+        title: 'Leques',
+        href: '/docs/primitives/hover-card',
+      },
+      {
+        title: 'Roupas',
+        href: '/docs/primitives/hover-card',
+      },
+      {
+        title: 'Toalhas',
+        href: '/docs/primitives/hover-card',
+      },
+      {
+        title: ' Todos os Produtos',
+        href: RoutesEnum.PRODUCTS,
+      },
+    ],
+  },
+  {
+    title: 'Artesãos',
+    href: '/docs/primitives/hover-card',
+  },
+]
 
 export function Nav() {
   return (
-    <NavigationMenu viewport={false} className="justify-end">
+    <NavigationMenu
+      viewport={false}
+      className="justify-end flex flex-col h-full"
+    >
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mt-4 mb-2 text-lg font-medium">
-                      shadcn/ui
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully designed components built with Tailwind CSS.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        {/* <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem> */}
-        {/* <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link to="/docs">Docs</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>List</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link to="#">
-                    <div className="font-medium">Components</div>
-                    <div className="text-muted-foreground">
-                      Browse all components in the library.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#">
-                    <div className="font-medium">Documentation</div>
-                    <div className="text-muted-foreground">
-                      Learn how to use the library.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#">
-                    <div className="font-medium">Blog</div>
-                    <div className="text-muted-foreground">
-                      Read our latest blog posts.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link to="#">Components</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#">Documentation</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#">Blocks</Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
-                    <CircleHelpIcon />
-                    Backlog
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
-                    <CircleIcon />
-                    To Do
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link to="#" className="flex-row items-center gap-2">
-                    <CircleCheckIcon />
-                    Done
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem> */}
+        {menuList.map((e) => (
+          <NavigationMenuItem key={e.title}>
+            {e.href ? (
+              <NavigationMenuLink asChild>
+                <Link to={e.href}>
+                  <TypographyBase className="font-medium">
+                    {e.title}
+                  </TypographyBase>
+                </Link>
+              </NavigationMenuLink>
+            ) : (
+              <>
+                <NavigationMenuTrigger className="font-medium">
+                  {e.title}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="flex flex-row">
+                  <ul className="grid w-[400px] min-h-60 gap-8 p-3">
+                    <li>
+                      {e.components?.map((item) => (
+                        <NavigationMenuLink asChild className="h-9">
+                          <Link to={item.href!}>
+                            <TypographyBase className="font-medium">
+                              {item.title}
+                            </TypographyBase>
+                          </Link>
+                        </NavigationMenuLink>
+                      ))}
+                    </li>
+                  </ul>
+                  {e.image && (
+                    <div className="bg-[url(/app/shared/assets/images/menu-decoration.png)] bg-no-repeat bg-cover bg-center w-40" />
+                  )}
+                </NavigationMenuContent>
+              </>
+            )}
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
-  )
-}
-
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}: React.ComponentPropsWithoutRef<'li'> & { href: string }) {
-  return (
-    <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link to={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
   )
 }

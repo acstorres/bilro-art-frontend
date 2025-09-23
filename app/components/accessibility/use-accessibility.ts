@@ -4,8 +4,8 @@ import useLocalStorage from '@shared/hooks/use-local-storage'
 
 export function useAccessibility() {
   const DEFAULT_FONT_SIZE = 100
-  const MIN_FONT_SIZE = 50
-  const MAX_FONT_SIZE = 190
+  const MIN_FONT_SIZE = 80
+  const MAX_FONT_SIZE = 150
   const FONT_SIZE_INTERVAL = 10
 
   const defaultOptions: AccessibilityOptions = {
