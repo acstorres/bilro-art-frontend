@@ -1,4 +1,4 @@
-import { TypographyBase } from '@components/typography/typography-base'
+import { TypographyBase } from '@shared/components/typography/typography-base'
 import { motion } from 'framer-motion'
 
 interface ProdutCardProps {

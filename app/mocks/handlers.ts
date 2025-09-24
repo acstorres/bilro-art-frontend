@@ -1,3 +1,3 @@
-import { userRequests } from '@services/user/user.mocks'
+import { userRequests } from '@features/register/services/user/user.mocks'
 
 export const handlers = [...userRequests]

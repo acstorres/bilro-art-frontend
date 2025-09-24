@@ -1,4 +1,4 @@
-import { createUser } from '@services/user/post/post.requests'
+import { createUser } from '@features/register/services/user/post/post.requests'
 import type { Route } from './+types/register'
 
 import { Register } from '@features/register/register'

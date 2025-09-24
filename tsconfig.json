@@ -19,9 +19,7 @@
       "@api/*": ["./app/api/*"],
       "@shared/*": ["./app/shared/*"],
       "@mocks/*": ["./app/mocks/*"],
-      "@components/*": ["./app/components/*"],
-      "@features/*": ["./app/features/*"],
-      "@services/*": ["./app/services/*"]
+      "@features/*": ["./app/features/*"]
     },
     "esModuleInterop": true,
     "verbatimModuleSyntax": true,
