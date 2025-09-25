@@ -15,7 +15,7 @@ export type ListProductParams = {
   size?: SizeEnum
   color?: ColorEnum
   sellerId?: string
-  active: string
+  active: 'true' | 'false'
   offset: string
 }
 

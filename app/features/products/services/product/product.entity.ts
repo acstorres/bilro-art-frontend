@@ -69,8 +69,6 @@ export interface Size {
   width: number
   length: number
   active: boolean
-  createdAt: string
-  updatedAt: string
 }
 
 export interface ProductEntity {
@@ -81,6 +79,7 @@ export interface ProductEntity {
   category: CategoryEnum
   subCategory: SubCategoryEnum
   price: number
+  images: string[]
   minimumOrderAmount: number
   weight: number
   amount: number
@@ -90,6 +89,4 @@ export interface ProductEntity {
   colors: Color[]
   sellerId: string
   active: boolean
-  createdAt: string
-  updatedAt: string
 }

@@ -31,6 +31,10 @@ export const listProductMock = http.get<
         minimumOrderAmount: 1,
         weight: 0.25,
         amount: 10,
+        images: [
+          'app/shared/assets/images/art03.jpg',
+          'app/shared/assets/images/art05.jpg',
+        ],
         onlyByOrder: false,
         manufacturingTime: 7,
         sizes: [
@@ -41,8 +45,6 @@ export const listProductMock = http.get<
             width: 45,
             length: 0,
             active: true,
-            createdAt: '2025-09-01T14:30:00.000Z',
-            updatedAt: '2025-09-07T10:15:00.000Z',
           },
         ],
         colors: [
@@ -51,8 +53,6 @@ export const listProductMock = http.get<
         ],
         sellerId: 'seller-001',
         active: true,
-        createdAt: '2025-09-01T14:30:00.000Z',
-        updatedAt: '2025-09-07T10:15:00.000Z',
       },
       {
         id: 'prod-002',
@@ -66,6 +66,10 @@ export const listProductMock = http.get<
         minimumOrderAmount: 1,
         weight: 0.8,
         amount: 5,
+        images: [
+          'app/shared/assets/images/art02.jpg',
+          'app/shared/assets/images/art04.jpg',
+        ],
         onlyByOrder: true,
         manufacturingTime: 20,
         sizes: [
@@ -76,8 +80,6 @@ export const listProductMock = http.get<
             width: 50,
             length: 5,
             active: true,
-            createdAt: '2025-09-01T14:30:00.000Z',
-            updatedAt: '2025-09-07T10:15:00.000Z',
           },
           {
             id: 'size-003',
@@ -86,8 +88,6 @@ export const listProductMock = http.get<
             width: 55,
             length: 5,
             active: true,
-            createdAt: '2025-09-01T14:30:00.000Z',
-            updatedAt: '2025-09-07T10:15:00.000Z',
           },
         ],
         colors: [
@@ -97,8 +97,6 @@ export const listProductMock = http.get<
         ],
         sellerId: 'seller-002',
         active: true,
-        createdAt: '2025-09-01T14:30:00.000Z',
-        updatedAt: '2025-09-07T10:15:00.000Z',
       },
       {
         id: 'prod-003',
@@ -112,6 +110,10 @@ export const listProductMock = http.get<
         minimumOrderAmount: 1,
         weight: 1.2,
         amount: 3,
+        images: [
+          'app/shared/assets/images/art06.png',
+          'app/shared/assets/images/art07.png',
+        ],
         onlyByOrder: false,
         manufacturingTime: 15,
         sizes: [
@@ -122,8 +124,6 @@ export const listProductMock = http.get<
             width: 220,
             length: 0,
             active: true,
-            createdAt: '2025-09-01T14:30:00.000Z',
-            updatedAt: '2025-09-07T10:15:00.000Z',
           },
         ],
         colors: [
@@ -136,8 +136,6 @@ export const listProductMock = http.get<
         ],
         sellerId: 'seller-003',
         active: true,
-        createdAt: '2025-09-01T14:30:00.000Z',
-        updatedAt: '2025-09-07T10:15:00.000Z',
       },
       {
         id: 'prod-004',
@@ -151,6 +149,10 @@ export const listProductMock = http.get<
         minimumOrderAmount: 1,
         weight: 0.15,
         amount: 8,
+        images: [
+          'app/shared/assets/images/art10.png',
+          'app/shared/assets/images/art11.png',
+        ],
         onlyByOrder: false,
         manufacturingTime: 10,
         sizes: [
@@ -161,8 +163,6 @@ export const listProductMock = http.get<
             width: 90,
             length: 0,
             active: true,
-            createdAt: '2025-09-01T14:30:00.000Z',
-            updatedAt: '2025-09-07T10:15:00.000Z',
           },
         ],
         colors: [
@@ -172,8 +172,6 @@ export const listProductMock = http.get<
         ],
         sellerId: 'seller-004',
         active: true,
-        createdAt: '2025-09-01T14:30:00.000Z',
-        updatedAt: '2025-09-07T10:15:00.000Z',
       },
     ],
     pages: 1,

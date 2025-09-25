@@ -2,6 +2,8 @@ import { Link } from 'react-router'
 
 import { TypographyBase } from '@shared/components/typography'
 import { RoutesEnum } from '@routes'
+import { responsivenessClasses } from './utils'
+import { cn } from '@shared/lib/utils'
 
 export default function Footer() {
   return (
@@ -23,7 +25,12 @@ export default function Footer() {
           </svg>
         </div>
 
-        <div className="pl-3 pr-3 md:pl-5 md-pr-5 lg:pl-20 lg:pr-20 xl:pl-30 xl:pr-30 2xl:pl-60 2xl:pr-60 mb-10 w-full flex flex-col justify-center text-center md:text-start md:justify-between md:flex-row gap-8">
+        <div
+          className={cn(
+            'mb-10 w-full flex flex-col justify-center text-center md:text-start md:justify-between md:flex-row gap-8',
+            responsivenessClasses,
+          )}
+        >
           <div className="flex flex-col self-center gap-2">
             <img
               src="app/shared/assets/logo/logo-and-name-white.png"
@@ -66,7 +73,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pb-2 pt-2 md:pb-4 md:pl-8 md:pr-8 md:pt-4 flex flex-col md:flex-row justify-center text-center text-xs md:text-sm gap-1 bg-primary-dark text-white">
+        <div className="py-2 md:py-4 md:px-8 flex flex-col md:flex-row justify-center text-center text-xs md:text-sm gap-1 bg-primary-dark text-white">
           <p>
             Copyright © {new Date().getFullYear()}, BilroArte. Direitos
             reservados.

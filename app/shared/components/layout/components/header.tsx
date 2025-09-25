@@ -8,6 +8,8 @@ import Hidden from '@shared/components/ui/hidden'
 import { useTheme } from '@shared/hooks/use-theme'
 import { RoutesEnum } from '@routes'
 import Nav from './nav'
+import { cn } from '@shared/lib/utils'
+import { responsivenessClasses } from './utils'
 
 export default function Header() {
   const { isDark } = useTheme()
@@ -17,7 +19,12 @@ export default function Header() {
   const gotToLogin = () => navigate(RoutesEnum.LOGIN)
   return (
     <header>
-      <div className="pt-3 pb-2 pl-3 pr-3 md:pl-5 md-pr-5 lg:pl-20 lg:pr-20 xl:pl-30 xl:pr-30 2xl:pl-60 2xl:pr-60 mb-10 fixed top-0 w-full bg-background z-50">
+      <div
+        className={cn(
+          'pt-3 pb-2 mb-10 fixed top-0 w-full bg-background z-50',
+          responsivenessClasses,
+        )}
+      >
         <div className="justify-between flex">
           <Link className="underline" to={RoutesEnum.HOME}>
             {isDark() ? (

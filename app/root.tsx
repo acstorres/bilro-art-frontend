@@ -6,13 +6,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useNavigation,
 } from 'react-router'
 
 import './app.css'
 import '@shared/mocks'
 
-import Loader from '@shared/components/ui/loader'
 import AccessibilityMenu from '@shared/components/accessibility'
 import Hidden from '@shared/components/ui/hidden'
 
@@ -50,26 +48,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const navigation = useNavigation()
-
-  const isLoading =
-    navigation.state === 'loading' || navigation.state === 'submitting'
-
   return (
-    <>
-      {isLoading ? (
-        <Loader isFullScreen />
-      ) : (
-        <UserProvider>
-          <>
-            <Outlet />
-            <Hidden bellow="tablet">
-              <AccessibilityMenu />
-            </Hidden>
-          </>
-        </UserProvider>
-      )}
-    </>
+    <UserProvider>
+      <>
+        <Outlet />
+        <Hidden bellow="tablet">
+          <AccessibilityMenu />
+        </Hidden>
+      </>
+    </UserProvider>
   )
 }
 
