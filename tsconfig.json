@@ -16,9 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@*": ["./app/*"],
-      "@api/*": ["./app/api/*"],
       "@shared/*": ["./app/shared/*"],
-      "@mocks/*": ["./app/mocks/*"],
       "@features/*": ["./app/features/*"]
     },
     "esModuleInterop": true,

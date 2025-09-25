@@ -12,7 +12,7 @@ import { Link } from 'react-router'
 
 interface MenuItem {
   title: string
-  href?: string
+  href: string
   components?: MenuItem[]
   image?: boolean
 }
@@ -29,6 +29,7 @@ const menuList: MenuItem[] = [
   {
     title: 'Produtos',
     image: true,
+    href: RoutesEnum.PRODUCTS,
     components: [
       {
         title: 'Capas',
@@ -58,7 +59,7 @@ const menuList: MenuItem[] = [
   },
 ]
 
-export function Nav() {
+export default function Nav() {
   return (
     <NavigationMenu
       viewport={false}
@@ -67,18 +68,16 @@ export function Nav() {
       <NavigationMenuList>
         {menuList.map((e) => (
           <NavigationMenuItem key={e.title}>
-            {e.href ? (
-              <NavigationMenuLink asChild>
-                <Link to={e.href}>
-                  <TypographyBase className="font-medium">
-                    {e.title}
-                  </TypographyBase>
-                </Link>
-              </NavigationMenuLink>
-            ) : (
+            {e.components ? (
               <>
                 <NavigationMenuTrigger className="font-medium">
-                  {e.title}
+                  <NavigationMenuLink asChild>
+                    <Link to={e.href}>
+                      <TypographyBase className="font-medium">
+                        {e.title}
+                      </TypographyBase>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="flex flex-row">
                   <ul className="grid w-[400px] min-h-60 gap-8 p-3">
@@ -99,6 +98,14 @@ export function Nav() {
                   )}
                 </NavigationMenuContent>
               </>
+            ) : (
+              <NavigationMenuLink asChild>
+                <Link to={e.href}>
+                  <TypographyBase className="font-medium">
+                    {e.title}
+                  </TypographyBase>
+                </Link>
+              </NavigationMenuLink>
             )}
           </NavigationMenuItem>
         ))}

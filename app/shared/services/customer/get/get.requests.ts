@@ -1,6 +1,6 @@
-import { privateAPI } from '@api/config'
+import { privateAPI } from '@shared/api/config'
 import type { GetCustomerNS } from './get.types'
-import { CUSTOMER } from '@api/endpoints'
+import { CUSTOMER } from '@shared/api/endpoints'
 
 export async function getCustomer({
   customerId,

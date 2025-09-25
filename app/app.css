@@ -322,5 +322,5 @@ html.highlight-links a {
 
 /* Cursor grande */
 html.big-cursor {
-  cursor: url('/big-cursor.png'), auto;
+  cursor: url('/app/shared/assets/images/big-cursor.png'), auto;
 }

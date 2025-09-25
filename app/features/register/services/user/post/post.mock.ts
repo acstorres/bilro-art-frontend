@@ -1,7 +1,7 @@
 import { http, delay, HttpResponse } from 'msw'
 import type { AuthUserNS, CreateUserNS } from './post.types'
-import { BFF_API_URL } from '@api/config'
-import { AUTH, REGISTER } from '@api/endpoints'
+import { BFF_API_URL } from '@shared/api/config'
+import { AUTH, REGISTER } from '@shared/api/endpoints'
 
 export const createUsertMock = http.post<
   any,

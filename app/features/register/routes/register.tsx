@@ -1,7 +1,7 @@
 import { createUser } from '@features/register/services/user/post/post.requests'
-import type { Route } from './+types/register'
+import type { Route } from '.react-router/types/app/features/register/routes/+types/register'
 
-import { Register } from '@features/register/register'
+import { Register } from '@features/register/pages/register'
 import { redirect } from 'react-router'
 import { RoutesEnum } from '@routes'
 

@@ -1,4 +1,4 @@
-import type { DefaultError, RequestError } from '@api/types'
+import type { DefaultError, RequestError } from '@shared/api/types'
 
 export namespace PatchCustomerBackendNS {
   export type Params = Record<string, never>

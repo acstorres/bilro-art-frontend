@@ -19,11 +19,11 @@ import {
   CardFooter,
   CardHeader,
 } from '@shared/components/ui/card'
+import { TypographyH1, TypographyBase } from '@shared/components/typography'
 
-import { loginValidationFormSchema } from './validations'
-import { TypographyBase } from '@shared/components/typography/typography-base'
+import { loginValidationFormSchema } from './../validations'
+
 import { RoutesEnum } from '@routes'
-import { TypographyH1 } from '@shared/components/typography/typography-h1'
 import type { AuthUserEntity } from '@features/register/services/user/post/post.entity'
 import { useTheme } from '@shared/hooks/use-theme'
 

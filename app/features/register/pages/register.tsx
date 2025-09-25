@@ -1,9 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { Link, useSubmit } from 'react-router'
 import { z } from 'zod'
 
-import { Input } from '@components/ui/input'
-import { Button } from '@components/ui/button'
+import { Input } from '@shared/components/ui/input'
+import { Button } from '@shared/components/ui/button'
 import {
   FormControl,
   FormField,
@@ -11,14 +12,13 @@ import {
   FormLabel,
   FormMessage,
   Form as FormProvider,
-} from '@components/ui/form'
-import { Card, CardContent, CardHeader } from '@components/ui/card'
+} from '@shared/components/ui/form'
+import { Card, CardContent, CardHeader } from '@shared/components/ui/card'
 
-import { registerValidationFormSchema } from './validations'
-import { Checkbox } from '@components/ui/checkbox'
-import { TypographySmall } from '@components/typography/typography-small'
-import { TypographyH1 } from '@components/typography/typography-h1'
-import { Link, useSubmit } from 'react-router'
+import { registerValidationFormSchema } from './../validations'
+import { Checkbox } from '@shared/components/ui/checkbox'
+import { TypographySmall, TypographyH1 } from '@shared/components/typography'
+
 import type { CreateUserEntity } from '@features/register/services/user/post/post.entity'
 import { useTheme } from '@shared/hooks/use-theme'
 import { RoutesEnum } from '@routes'

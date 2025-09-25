@@ -1,6 +1,6 @@
-import { AUTH, REGISTER } from '@api/endpoints'
+import { AUTH, REGISTER } from '@shared/api/endpoints'
 import type { AuthUserNS, CreateUserNS } from './post.types'
-import { publicAPI } from '@api/config'
+import { publicAPI } from '@shared/api/config'
 
 export async function createUser({
   data,

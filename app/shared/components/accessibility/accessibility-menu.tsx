@@ -10,15 +10,18 @@ import {
   Sun,
   Moon,
 } from 'lucide-react'
-import { useAccessibility } from '../../hooks/use-accessibility'
+
 import { Switch } from '@shared/components/ui/switch'
 import { Label } from '@shared/components/ui/label'
 import { Button } from '@shared/components/ui/button'
-import { AccessibilityEnum } from './types'
 import { Separator } from '@shared/components/ui/separator'
-import { useTheme } from '@shared/hooks/use-theme'
 
-export function AccessibilityMenu() {
+import { useTheme } from '@shared/hooks/use-theme'
+import { useAccessibility } from '@shared/hooks/use-accessibility'
+
+import { AccessibilityEnum } from './types'
+
+export default function AccessibilityMenu() {
   const [open, setOpen] = useState(false)
   const {
     setTheme,

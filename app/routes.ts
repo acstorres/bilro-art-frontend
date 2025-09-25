@@ -8,8 +8,8 @@ export enum RoutesEnum {
 }
 
 export default [
-  index('routes/home.tsx'),
-  route('register', 'routes/register.tsx'),
-  route('login', 'routes/login.tsx'),
-  route('products', 'routes/products.tsx'),
+  index('features/home/routes/home.tsx'),
+  route('register', 'features/register/routes/register.tsx'),
+  route('login', 'features/login/routes/login.tsx'),
+  route('products', 'features/products/routes/products.tsx'),
 ] satisfies RouteConfig

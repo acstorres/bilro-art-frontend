@@ -1,11 +1,13 @@
-import { Nav } from './nav'
-import { Handbag, Menu, User } from 'lucide-react'
 import { Link, useNavigate } from 'react-router'
+import { Handbag, Menu, User } from 'lucide-react'
+
 import { Button } from '@shared/components/ui/button'
-import { RoutesEnum } from '@routes'
 import { Badge } from '@shared/components/ui/badge'
-import { useTheme } from '@shared/hooks/use-theme'
 import Hidden from '@shared/components/ui/hidden'
+
+import { useTheme } from '@shared/hooks/use-theme'
+import { RoutesEnum } from '@routes'
+import Nav from './nav'
 
 export default function Header() {
   const { isDark } = useTheme()
@@ -15,7 +17,7 @@ export default function Header() {
   const gotToLogin = () => navigate(RoutesEnum.LOGIN)
   return (
     <header>
-      <div className="pl-2 pr-2 md:pl-60 md:pr-60 lg:pl-60 lg:pr-60 pt-3 pb-2 fixed top-0 w-full bg-background z-50">
+      <div className="pt-3 pb-2 pl-3 pr-3 md:pl-5 md-pr-5 lg:pl-20 lg:pr-20 xl:pl-30 xl:pr-30 2xl:pl-60 2xl:pr-60 mb-10 fixed top-0 w-full bg-background z-50">
         <div className="justify-between flex">
           <Link className="underline" to={RoutesEnum.HOME}>
             {isDark() ? (

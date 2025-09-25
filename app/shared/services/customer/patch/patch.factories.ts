@@ -1,4 +1,4 @@
-import type { Factory } from '@api/types'
+import type { Factory } from '@shared/api/types'
 import type { CreateUserNS } from '../../../../features/register/services/user/post/post.types'
 
 export const createUserFactories = {

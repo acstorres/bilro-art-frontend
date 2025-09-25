@@ -1,5 +1,5 @@
-import { Home } from '@features/home/home'
-import type { Route } from './+types/home'
+import type { Route } from '.react-router/types/app/features/home/routes/+types/home'
+import { Home } from '@features/home/pages/home'
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: 'BilroArte Início' }, { name: 'description', content: '' }]

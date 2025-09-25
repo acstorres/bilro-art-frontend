@@ -1,8 +1,8 @@
 import { http, delay, HttpResponse } from 'msw'
 
-import { BFF_API_URL } from '@api/config'
+import { BFF_API_URL } from '@shared/api/config'
 import type { GetCustomerNS } from './get.types'
-import { CUSTOMER } from '@api/endpoints'
+import { CUSTOMER } from '@shared/api/endpoints'
 
 export const getCustomerMock = http.get<
   GetCustomerNS.Params,

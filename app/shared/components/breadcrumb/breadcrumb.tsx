@@ -1,4 +1,5 @@
-import { TypographyBase } from '@shared/components/typography/typography-base'
+import { NavLink } from 'react-router'
+import { TypographyBase } from '@shared/components/typography'
 import {
   BreadcrumbItem,
   BreadcrumbLink,
@@ -7,7 +8,6 @@ import {
   Breadcrumb as BreadcrumComponent,
 } from '@shared/components/ui/breadcrumb'
 import { RoutesEnum } from '@routes'
-import { NavLink } from 'react-router'
 
 interface BreadcrumbRoute {
   route: RoutesEnum

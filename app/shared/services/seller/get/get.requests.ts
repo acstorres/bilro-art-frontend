@@ -1,12 +1,11 @@
-import { privateAPI } from '@api/config'
+import { privateAPI } from '@shared/api/config'
 import type { GetCustomerNS } from './get.types'
-import { CUSTOMER } from '@api/endpoints'
+import { CUSTOMER } from '@shared/api/endpoints'
 
 export async function getCustomer({
   customerId,
 }: GetCustomerNS.Params): Promise<GetCustomerNS.Response> {
-  //TODO
-  const res = await privateAPI('fgdgdf').get<GetCustomerNS.Response>(
+  const res = await privateAPI().get<GetCustomerNS.Response>(
     `${CUSTOMER}/${customerId}`,
   )
 

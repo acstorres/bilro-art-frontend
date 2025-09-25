@@ -10,12 +10,13 @@ import {
 } from 'react-router'
 
 import './app.css'
-import './mocks'
+import '@shared/mocks'
 
-import Loader from '@components/ui/loader'
-import { AccessibilityMenu } from '@components/accessibility/accessibility-menu'
+import Loader from '@shared/components/ui/loader'
+import AccessibilityMenu from '@shared/components/accessibility'
+import Hidden from '@shared/components/ui/hidden'
+
 import { UserProvider } from '@shared/context/user-context'
-import Hidden from '@components/ui/hidden'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

@@ -1,5 +1,5 @@
-import { publicAPI } from '@api/config'
-import { PRODUCTS } from '@api/endpoints'
+import { publicAPI } from '@shared/api/config'
+import { PRODUCTS } from '@shared/api/endpoints'
 import type { ListProductNS } from './list.types'
 
 export async function listProduct(

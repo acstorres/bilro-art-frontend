@@ -1,4 +1,4 @@
-import type { RequestError } from '@api/types'
+import type { RequestError } from '@shared/api/types'
 import type {
   AuthUserEntity,
   AuthUserResponseEntity,

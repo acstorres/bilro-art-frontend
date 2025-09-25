@@ -15,8 +15,8 @@ export type ListProductParams = {
   size?: SizeEnum
   color?: ColorEnum
   sellerId?: string
-  active: boolean
-  offset: number
+  active: string
+  offset: string
 }
 
 export type ListProductResponse = {

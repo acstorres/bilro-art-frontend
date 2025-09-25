@@ -1,9 +1,9 @@
-import { TypographyH1 } from '@shared/components/typography/typography-h1'
 import { RoutesEnum } from '@routes'
 import Breadcrumb from '@shared/components/breadcrumb/breadcrumb'
-import Section from '@shared/components/layout/components/section'
-import Layout from '@shared/components/layout/layout'
-import { ProdutCard } from './components/product-card'
+import { Section } from '@shared/components/layout/components'
+import { TypographyH1 } from '@shared/components/typography'
+import Layout from '@shared/components/layout'
+import { ProductCard } from '@features/products/components'
 
 export function Products() {
   return (
@@ -21,7 +21,7 @@ export function Products() {
           </TypographyH1>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 lg:gap-8">
-          <ProdutCard
+          <ProductCard
             name="Capa de Almofada Doce de Coco"
             price="58,99"
             imageUrl={[

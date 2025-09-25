@@ -1,13 +1,13 @@
-import { TypographyBase } from '@shared/components/typography/typography-base'
+import { TypographyBase } from '@shared/components/typography'
 import { motion } from 'framer-motion'
 
-interface ProdutCardProps {
+interface ProductCardProps {
   name: string
   price: string
   imageUrl: string[]
 }
 
-export function ProdutCard({ name, price, imageUrl }: ProdutCardProps) {
+export function ProductCard({ name, price, imageUrl }: ProductCardProps) {
   return (
     <div className="pb-10 min-w-40 cursor-pointer">
       <div className="relative h-80 md:h-96 lg:h-110 xl:h-120 2xl:h-135 min-w-40 mb-4 overflow-hidden">

@@ -1,7 +1,7 @@
-import { TypographyBase } from '@shared/components/typography/typography-base'
-import { RoutesEnum } from '@routes'
 import { Link } from 'react-router'
-import Section from './section'
+
+import { TypographyBase } from '@shared/components/typography'
+import { RoutesEnum } from '@routes'
 
 export default function Footer() {
   return (
@@ -22,50 +22,50 @@ export default function Footer() {
             />
           </svg>
         </div>
-        <Section>
-          <div className="flex flex-col justify-center text-center md:text-start md:justify-between md:flex-row gap-8">
-            <div className="flex flex-col self-center gap-2">
-              <img
-                src="app/shared/assets/logo/logo-and-name-white.png"
-                alt="logo-name-white"
-                width={170}
-              />
-              <div className="flex flex-col">
-                <TypographyBase className="text-white text-sm">
-                  contato@bilroarte.com
-                </TypographyBase>
-                <TypographyBase className="text-white text-sm">
-                  Telefone: +55 (98) 98736-7688
-                </TypographyBase>
-              </div>
-            </div>
-            <div className="flex flex-col gap-1">
-              <Link to={RoutesEnum.HOME} className="text-white text-sm">
-                FAQs
-              </Link>
-              <Link to={RoutesEnum.HOME} className="text-white text-sm">
-                Sobre nós
-              </Link>
-              <Link to={RoutesEnum.HOME} className="text-white text-sm">
-                Devolução e Troca
-              </Link>
-            </div>
-            <div className="flex gap-8 self-center">
-              <img
-                src="app/shared/assets/logo/logo-ifma.png"
-                alt="Logo IFMA"
-                width={90}
-                height={90}
-              />
-              <img
-                src="app/shared/assets/logo/logo-bg-repeat.png"
-                alt="Logo Bilro Arte"
-                width={90}
-                height={90}
-              />
+
+        <div className="pl-3 pr-3 md:pl-5 md-pr-5 lg:pl-20 lg:pr-20 xl:pl-30 xl:pr-30 2xl:pl-60 2xl:pr-60 mb-10 w-full flex flex-col justify-center text-center md:text-start md:justify-between md:flex-row gap-8">
+          <div className="flex flex-col self-center gap-2">
+            <img
+              src="app/shared/assets/logo/logo-and-name-white.png"
+              alt="logo-name-white"
+              width={170}
+            />
+            <div className="flex flex-col">
+              <TypographyBase className="text-white text-sm">
+                contato@bilroarte.com
+              </TypographyBase>
+              <TypographyBase className="text-white text-sm">
+                Telefone: +55 (98) 98736-7688
+              </TypographyBase>
             </div>
           </div>
-        </Section>
+          <div className="flex flex-col gap-1">
+            <Link to={RoutesEnum.HOME} className="text-white text-sm">
+              FAQs
+            </Link>
+            <Link to={RoutesEnum.HOME} className="text-white text-sm">
+              Sobre nós
+            </Link>
+            <Link to={RoutesEnum.HOME} className="text-white text-sm">
+              Devolução e Troca
+            </Link>
+          </div>
+          <div className="flex gap-8 self-center">
+            <img
+              src="app/shared/assets/logo/logo-ifma.png"
+              alt="Logo IFMA"
+              width={90}
+              height={90}
+            />
+            <img
+              src="app/shared/assets/logo/logo-bg-repeat.png"
+              alt="Logo Bilro Arte"
+              width={90}
+              height={90}
+            />
+          </div>
+        </div>
+
         <div className="pb-2 pt-2 md:pb-4 md:pl-8 md:pr-8 md:pt-4 flex flex-col md:flex-row justify-center text-center text-xs md:text-sm gap-1 bg-primary-dark text-white">
           <p>
             Copyright © {new Date().getFullYear()}, BilroArte. Direitos
