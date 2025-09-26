@@ -6,16 +6,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useNavigation,
 } from 'react-router'
 
 import './app.css'
-import './mocks'
+import '@shared/mocks'
 
-import Loader from '@components/ui/loader'
-import { AccessibilityMenu } from '@components/accessibility/accessibility-menu'
+import AccessibilityMenu from '@shared/components/accessibility'
+import Hidden from '@shared/components/ui/hidden'
+
 import { UserProvider } from '@shared/context/user-context'
-import Hidden from '@components/ui/hidden'
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -49,26 +48,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const navigation = useNavigation()
-
-  const isLoading =
-    navigation.state === 'loading' || navigation.state === 'submitting'
-
   return (
-    <>
-      {isLoading ? (
-        <Loader isFullScreen />
-      ) : (
-        <UserProvider>
-          <>
-            <Outlet />
-            <Hidden bellow="tablet">
-              <AccessibilityMenu />
-            </Hidden>
-          </>
-        </UserProvider>
-      )}
-    </>
+    <UserProvider>
+      <>
+        <Outlet />
+        <Hidden bellow="tablet">
+          <AccessibilityMenu />
+        </Hidden>
+      </>
+    </UserProvider>
   )
 }
 
