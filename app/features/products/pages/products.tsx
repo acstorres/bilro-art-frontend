@@ -7,18 +7,17 @@ import { Section } from '@shared/components/layout/components'
 import { TypographyH1 } from '@shared/components/typography'
 import Layout from '@shared/components/layout'
 import { ProductCard } from '@features/products/components'
-import { Button } from '@shared/components/ui/button'
+import { Pagination } from '../components/pagination'
 
 export function Products({ loaderData }: Route.ComponentProps) {
-  const { products } = loaderData
+  const { products, pages } = loaderData
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const loadMore = () => {
-    const nextOffset = Number(searchParams.get('offset') ?? '1') + 1
-    setSearchParams({ ...searchParams, offset: nextOffset.toString() })
-  }
+  const onPageChange = (page: number) =>
+    setSearchParams({ ...searchParams, offset: page.toString() })
 
-  setSearchParams({ offset: '1' })
+  const currentPage = () => Number(searchParams.get('offset') ?? '1')
+
   return (
     <Layout>
       <Section>
@@ -47,9 +46,11 @@ export function Products({ loaderData }: Route.ComponentProps) {
           ))}
         </div>
         <div className="flex justify-center">
-          <Button variant={'ghost'} onClick={() => loadMore()}>
-            Carregar mais
-          </Button>
+          <Pagination
+            pages={pages}
+            currentPage={currentPage()}
+            onPageChange={onPageChange}
+          />
         </div>
       </Section>
     </Layout>
