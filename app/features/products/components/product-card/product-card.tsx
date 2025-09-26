@@ -1,7 +1,11 @@
 import { TypographyBase } from '@shared/components/typography'
 import { motion } from 'framer-motion'
-import ProductColors from './product-colors'
-import type { Color, Size } from '../services/product/product.entity'
+import type {
+  Color,
+  Size,
+} from '@features/products/services/product/product.entity'
+
+import { ProductColors } from '@features/products/components'
 
 interface ProductCardProps {
   productId: string
@@ -47,7 +51,7 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-col text-center">
-        <div className="flex flex-row gap-1 justify-center mb-2">
+        <div className="flex flex-row gap-2 justify-center mb-2">
           <ProductColors colors={colors} />
         </div>
         <TypographyBase className="text-xs sm:text-sm font-medium">

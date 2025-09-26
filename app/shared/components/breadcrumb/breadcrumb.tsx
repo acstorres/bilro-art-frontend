@@ -23,7 +23,7 @@ export default function Breadcrumb({ pages }: BreadcrumbProps) {
     page.name === pages[pages.length - 1].name
 
   return (
-    <BreadcrumComponent className="bg-background/96 fixed z-10 w-full h-12 content-center">
+    <BreadcrumComponent className="bg-background/87 w-full h-12 content-center backdrop-blur-xs">
       <BreadcrumbList>
         {pages.map((page) => (
           <>

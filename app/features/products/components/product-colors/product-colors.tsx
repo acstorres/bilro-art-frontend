@@ -17,12 +17,12 @@ const colorValues: ColorValues = {
   [ColorEnum.OTHER]: '#CCCCCC',
 }
 
-export default function ProductColors({ colors }: ProductColorsProps) {
+export function ProductColors({ colors }: ProductColorsProps) {
   return colors.map((color) => (
     <Badge
       key={color.id}
       variant="default"
-      className="p-2 border border-secondary"
+      className="p-2 lg:p-3 xl:p-3 2xl:p-3 border border-secondary rounded-full"
       style={{ backgroundColor: colorValues[color.colorEnum] }}
     />
   ))
